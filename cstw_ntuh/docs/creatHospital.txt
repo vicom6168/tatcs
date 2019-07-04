@@ -1,0 +1,63 @@
+私立中山醫學大學附屬醫院
+kmuh
+臺北榮民總醫院
+vghtpe
+台大醫院新竹分院
+ntuhhch
+mkdir cstw_csmuh
+
+cp -R cstw_ntuh/* cstw_csmuh/
+
+
+ chown -R project:project cstw_csmuh/*
+ chown project:project cstw_tygh/.htaccess
+
+vi /etc/httpd/conf.d/virtualhost.conf
+
+
+<VirtualHost *:80>
+    DocumentRoot "/home/project/websites/cstw_tygh"
+    ServerName tygh.cstw.org.tw
+     DirectoryIndex  index.php index.html index.htm index.shtml
+     <Directory "/home/project/websites/cstw_tygh">
+            Options FollowSymLinks
+            AllowOverride All
+            Allow from all
+        </Directory>
+
+    # Other directives here
+</VirtualHost>
+
+
+service httpd restart
+
+/home/project/websites/cstw_csmuh/css/images
+
+
+
+cp -rf /home/project/websites/cstw_ntuh/application/views/* /home/project/websites/cstw_csmuh/application/views/
+cp -rf /home/project/websites/cstw_ntuh/application/libraries/* /home/project/websites/cstw_csmuh/application/libraries/
+cp -rf /home/project/websites/cstw_ntuh/application/models/* /home/project/websites/cstw_csmuh/application/models/
+cp -rf /home/project/websites/cstw_ntuh/application/controllers/* /home/project/websites/cstw_csmuh/application/controllers/
+cp -rf /home/project/websites/cstw_ntuh/images/* /home/project/websites/cstw_csmuh/images/
+
+chown -R project:project  /home/project/websites/cstw_csmuh/application/views/
+chown -R project:project  /home/project/websites/cstw_csmuh/application/libraries/
+chown -R project:project  /home/project/websites/cstw_csmuh/application/models/
+chown -R project:project  /home/project/websites/cstw_csmuh/application/controllers/
+chown -R project:project  /home/project/websites/cstw_csmuh/images/
+echo "\n cstw_csmuh  Completed";
+
+cp -rf /home/project/websites/cstw_ntuh/application/views/* /home/project/websites/cstw_lkcgmh/application/views/
+cp -rf /home/project/websites/cstw_ntuh/application/libraries/* /home/project/websites/cstw_lkcgmh/application/libraries/
+cp -rf /home/project/websites/cstw_ntuh/application/models/* /home/project/websites/cstw_lkcgmh/application/models/
+cp -rf /home/project/websites/cstw_ntuh/application/controllers/* /home/project/websites/cstw_lkcgmh/application/controllers/
+cp -rf /home/project/websites/cstw_ntuh/images/* /home/project/websites/cstw_lkcgmh/images/
+
+chown -R project:project  /home/project/websites/cstw_lkcgmh/application/views/
+chown -R project:project  /home/project/websites/cstw_lkcgmh/application/libraries/
+chown -R project:project  /home/project/websites/cstw_lkcgmh/application/models/
+chown -R project:project  /home/project/websites/cstw_lkcgmh/application/controllers/
+chown -R project:project  /home/project/websites/cstw_lkcgmh/images/
+echo "\n cstw_lkcgmh  Completed";
+

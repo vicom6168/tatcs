@@ -1,0 +1,56 @@
+SELECT '台大醫院',count(*) FROM twcvs_ntuh.patientinformation t1 where isDeleted='N'
+UNION
+SELECT '萬芳醫院',count(*) FROM twcvs_wanfang.patientinformation t1 where isDeleted='N'
+UNION
+SELECT '台大新竹分院',count(*) FROM twcvs_ntuhhch.patientinformation t1 where isDeleted='N'
+UNION
+SELECT '林口長庚醫院',count(*) FROM twcvs_lkcgmh.patientinformation t1 where isDeleted='N'
+UNION
+SELECT '三軍總醫院',count(*) FROM twcvs_tsgh.patientinformation t1 where isDeleted='N'
+UNION
+SELECT '高雄長庚醫院',count(*) FROM twcvs_cgmh.patientinformation t1 where isDeleted='N'
+UNION
+SELECT '成大醫院',count(*) FROM twcvs_nckuh.patientinformation t1 where isDeleted='N'
+UNION
+SELECT '亞東紀念醫院',count(*) FROM twcvs_femh.patientinformation t1 where isDeleted='N'
+UNION
+SELECT '台北慈濟',count(*) FROM twcvs_tzuchitp.patientinformation t1 where isDeleted='N'
+UNION
+SELECT '馬偕紀念醫院',count(*) FROM twcvs_mmh.patientinformation t1 where isDeleted='N'
+UNION
+SELECT '國軍桃園總醫院',count(*) FROM twcvs_aftygh.patientinformation t1 where isDeleted='N'
+UNION
+SELECT '私立中山醫學大學附屬醫院',count(*) FROM twcvs_csmuh.patientinformation t1 where isDeleted='N'
+UNION
+SELECT '國軍高雄總醫院',count(*) FROM twcvs_kh802.patientinformation t1 where isDeleted='N'
+UNION
+SELECT '天主教輔仁大學附屬醫院',count(*) FROM twcvs_fjuh.patientinformation t1 where isDeleted='N'
+UNION
+SELECT '台北醫學大學附設醫院',count(*) FROM twcvs_tmuh.patientinformation t1 where isDeleted='N'
+UNION
+SELECT '嘉義長庚紀念醫院',count(*) FROM twcvs_cycgmh.patientinformation t1 where isDeleted='N'
+UNION
+SELECT '花蓮慈濟醫院',count(*) FROM twcvs_tzuchicvs.patientinformation t1 where isDeleted='N'
+UNION
+SELECT '高雄醫學大學附設醫院',count(*) FROM twcvs_kmuh.patientinformation t1 where isDeleted='N'
+UNION
+SELECT '天主教耕莘醫療財團法人耕莘醫院',count(*) FROM twcvs_cth.patientinformation t1 where isDeleted='N'
+UNION
+SELECT '義大醫院',count(*) FROM twcvs_edah.patientinformation t1 where isDeleted='N'
+UNION
+SELECT '屏東基督教醫院',count(*) FROM twcvs_ptch.patientinformation t1 where isDeleted='N'
+UNION
+SELECT '中國醫藥大學附設大學',count(*) FROM twcvs_cmuh.patientinformation t1 where isDeleted='N'
+UNION
+SELECT '成大醫院',count(*) FROM twcvs_nckuh.patientinformation t1 where isDeleted='N'
+UNION
+SELECT '基隆長庚醫院',count(*) FROM twcvs_klcgmh.patientinformation t1 where isDeleted='N'
+
+
+
+
+
+
+
+select patientHospital,count(*) as total from patientinformation
+group by patientHospital order by total desc

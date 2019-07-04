@@ -1,0 +1,3 @@
+40 07 * * *  /usr/bin/curl https://kmuh.cstw.org.tw/cronjob
+45 07 * * *  /usr/bin/curl https://ntuhhch.cstw.org.tw/cronjob
+50 07 * * *  /usr/bin/curl https://vghtpe.cstw.org.tw/cronjob

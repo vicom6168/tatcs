@@ -1,0 +1,2 @@
+select patientHospital,count(*) as total from patientinformation where isDeleted='N'
+group by patientHospital order by total desc

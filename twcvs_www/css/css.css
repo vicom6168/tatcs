@@ -1,0 +1,424 @@
+
+/* GENERAL STYLES */
+
+body, div, td
+{
+	font-family:verdana,arial;
+	font-size:12px;
+}
+
+.darkred {
+	 color: #AA0000;
+	 margin: 0px;
+	 padding: 0px;
+	 width: auto;
+	 float: left;
+	 margin-right: auto;
+	 margin-left: auto;
+}
+
+.maintablepadding{
+	padding:20px 40px 10px 40px;
+}
+
+.maintable{
+	font-family:verdana,arial;
+	font-size:12px;
+	border: 0px;
+	vertical-align: text-top;
+}
+.maintable td{
+	font-family:verdana,arial;
+	font-size:12px;
+	border: 0px;
+}
+
+.selecttable td{
+	font-family:verdana,arial;
+	font-size:12px;
+	border:1px solid #EBEBEB;
+}
+
+.buttontd
+{
+	padding-top: 5px;
+	text-align:right;
+}
+
+.startbuttonActive
+{
+	padding-top: 4px;
+	border: 1px #000000 solid;
+	background-color: #00AF00;
+	width: 130px;
+	height: 25px;
+	display: block;
+}
+
+.startbuttonActive A
+{
+	color: #FFFFFF;
+	text-decoration: none;
+	font-weight: bold;	
+	margin: 0px;
+}
+
+.startbuttonNotActive
+{
+	padding-top: 4px;
+	border: 1px #000000 solid;
+	background-color: #AF0000;
+	width: 130px;
+	height: 25px;
+	display: block;
+}
+
+.startbuttonNotActive A
+{
+	color: #FFFFFF;
+	text-decoration: none;
+	font-weight: bold;
+	margin: 0px;
+}
+
+
+
+.LaBox
+{
+	margin-top: 20px;
+	width: 600px;
+	text-align: left;
+	margin-bottom: 15px;
+}
+
+.LaText 
+{
+	margin-top:5px;
+	border: 1px #000000 solid;
+	width: 100%; 
+	height: 160px;
+}
+
+.headerPics
+{
+	width: 50%;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+/* END GENERAL STYLES */
+
+.bullet2
+{
+padding-right:4px;
+text-align:right;
+}
+
+.tdtext
+{
+padding-left:4px;
+text-align:left;
+}
+
+
+/* overview.htm STYLES */
+
+.statusmaintablepadding{
+	padding-left: 15px;
+	padding-top: 20px;
+	width:100%;
+}
+
+.statusmaintable{
+	font-family:verdana,arial;
+}
+
+
+.statusmaintablepadding td
+{
+	text-align:center;
+	font-size:9px;	
+}
+
+.statusmaintable td
+{
+	border:1px solid #EBEBEB;
+}
+
+.statusdiv
+{
+	text-align:center;
+}
+
+.statuscheckbox
+{
+	height:12px;
+}
+
+/* END overview.htm STYLES */
+
+
+/* header.htm STYLES */
+
+#dominance, #current
+{	
+	color:#005078;
+	font-family:verdana,arial;
+	font-size:9px;
+	font-weight:bold;
+}
+
+#score, #scorelabel
+{	
+	color:#005078;
+	font-family:verdana,arial;
+	font-size:9px;
+	font-weight:bold;
+}
+
+#version
+{	
+	color:#005078;
+	font-family:verdana,arial;
+	font-size:9px;
+	
+}
+
+.score{
+	color:#D7CA01;
+	font-size:14px;
+	font-weight:bold;
+}
+
+/* END header.htm STYLES */
+
+
+/* form.htm STYLES */
+
+.title{
+	color:#004A80;
+	font-size:14px;
+	font-weight:bold;
+}
+
+.number{
+	color:#004A80;
+	font-size:16px;
+	font-weight:bold;
+}
+
+.radiobuttontext{
+	padding-left:8px;
+}
+
+.radiobuttontext2{
+	padding-left:14px;
+}
+
+.radiobuttontext3{
+	padding-left:1px;
+}
+
+.radiobuttontext4{
+	padding-left:12px;
+}
+
+.link{
+	font-family:verdana,arial;
+	font-size:12px;
+	color:#000000;
+	text-decoration:none;
+}
+
+form
+{
+	padding:0px;
+	margin:0px;
+}
+
+.comment
+{
+	width: 300px;
+	height: 100px;
+}
+
+.body
+{
+	padding-top:10px;
+}
+
+/* END form.htm STYLES */
+
+/* start.htm STYLES */
+
+.buttonrow
+{
+	padding-top:2px;	
+	padding-bottom:2px;
+}
+
+/* END start.htm STYLES */
+
+
+/* euroscore.htm STYLES */
+
+.euroscoreformheader
+{
+	font-size: 12px;
+	padding-left:4px;
+}
+
+.euroscoremainheader
+{
+	font-size: 14px;
+	text-align:center;
+	color: #FFFFFF;
+}
+
+.euroscorenote
+{
+	font-size: 10px;
+	color: #FFFFFF;
+}
+
+.euroscoretable
+{
+	border:2px solid black;	
+}
+
+.euroscoretable td
+{
+	border:0px solid white;	
+}
+
+/* END euroscore.htm STYLES */
+
+/* scoreoverview.htm STYLES */
+.sotable
+{
+	width:75%;
+}
+
+.lesionheader
+{
+	font-weight:bold;
+}
+
+.genheader
+{
+	font-weight:bold;
+	font-size:14px;
+}
+
+.sodata
+{
+text-align:left;
+width:90%;
+}
+
+.soscore
+{
+	text-align:left;
+	width:10%;
+	
+}
+
+.sosubtotal
+{
+	text-align:left;
+	font-style:italic;
+	width:90%;
+}
+.sosubtotalscore
+{
+	text-align:left;
+	font-style:italic;
+	width:10%;
+}
+
+.sototal
+{
+	border-bottom:1px black solid;
+	text-align:left;
+	font-style:italic;
+	width:90%;
+}
+
+.sototalscore
+{
+	text-align:left;
+	font-style:italic;
+	border-bottom:1px black solid;
+	width:10%;
+}
+
+.socomment
+{
+width:auto;
+}
+
+.sumarlabeldefault
+{
+	text-align:left;
+	border-bottom:1px black solid;
+	width:70%;
+	
+}
+
+.sumarvaluedefault
+{
+	text-align:left;
+	border-bottom:1px black solid;
+	width: 30%;
+}
+
+.sumarnoline {
+     text-align:left;
+     width: 30%;
+}
+
+.sumarnolinevalue {
+     text-align:left;
+     width: 70%;
+}
+
+
+.sumardob {
+    text-align:left;
+    width: 30%;
+    border-bottom:1px black solid;
+}
+
+.sumardobvalue {
+    text-align:left;
+    width: 70%;
+    border-bottom:1px black solid;
+}
+
+a
+{
+color:#333333;
+}
+
+.kmpicture {
+  margin-top: 20px;
+  display:block;
+  text-align:center;
+  width:100%;
+}
+
+#allanswertablepicture{
+  display:none;	
+}
+
+#allanswertable
+{
+  display:none;
+}
+
+/* END scoreoverview.htm STYLES */
+
+.version
+{
+display:none;
+}

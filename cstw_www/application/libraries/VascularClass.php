@@ -1,0 +1,40 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed'); 
+
+class VascularClass {
+  public $patientID;
+  public $patientHospital;
+  public $patientChartNumber;
+  public $patientName;
+  public $patientBirthday;
+  public $patientAge;
+  public $patientAgeDescription;
+  public $patientAgeUnit;
+  public $patientGender;
+  public $patientSurgeon;
+  public $patientSurgeon2;
+  public $patientSurgeon3;
+  public $patientSurgeon4;
+  public $patientSurgeon_id;
+  public $patientSurgeon_id2;
+  public $patientSurgeon_id3;
+  public $patientSurgeon_id4;
+  public $patientOpDate;
+  public $patientProcedure1;
+  public $patientProcedure2;
+  public $patientProcedure3;
+  public $patientProcedure4;
+  public $patientProcedure5;
+  public $patientProcedure_id1;
+  public $patientProcedure_id2;
+  public $patientProcedure_id3;
+  public $patientProcedure_id4;
+  public $patientProcedure_id5;
+  public $patientProcedureOthers;
+  public $patientDiagnosis;
+  public $vascularMemo;
+  public $createPerson;
+  public $createTime;
+  public $modifyPerson;
+  public $modifyTime;
+  public $isDeleted;
+}

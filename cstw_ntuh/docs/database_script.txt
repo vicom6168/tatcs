@@ -1,0 +1,799 @@
+/*
+Navicat MySQL Data Transfer
+
+Source Server         : CSTW
+Source Server Version : 80011
+Source Host           : 103.118.24.69:3306
+Source Database       : cstw_mmh
+
+Target Server Type    : MYSQL
+Target Server Version : 80011
+File Encoding         : 65001
+
+Date: 2019-03-27 11:11:50
+*/
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for `accesslog`
+-- ----------------------------
+DROP TABLE IF EXISTS `accesslog`;
+CREATE TABLE `accesslog` (
+  `aid` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` int(11) DEFAULT NULL,
+  `uempno` char(10) DEFAULT NULL,
+  `uname` varchar(20) DEFAULT NULL,
+  `accesstype` char(1) DEFAULT NULL,
+  `accessip` varchar(20) DEFAULT NULL,
+  `accesstable` varchar(30) DEFAULT NULL,
+  `accessstr` varchar(500) DEFAULT NULL,
+  `accesstime` datetime DEFAULT NULL,
+  `accesskey` int(11) DEFAULT NULL,
+  `accessresult` char(1) DEFAULT NULL,
+  PRIMARY KEY (`aid`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of accesslog
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `complication`
+-- ----------------------------
+DROP TABLE IF EXISTS `complication`;
+CREATE TABLE `complication` (
+  `cid` int(11) NOT NULL AUTO_INCREMENT,
+  `subject` varchar(50) DEFAULT NULL,
+  `diseasetype` int(11) DEFAULT NULL,
+  `order` int(11) DEFAULT NULL,
+  PRIMARY KEY (`cid`)
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of complication
+-- ----------------------------
+INSERT INTO `complication` VALUES ('1', 'Operative Mortality', null, '1');
+INSERT INTO `complication` VALUES ('2', 'Wound Infection', null, '2');
+INSERT INTO `complication` VALUES ('3', 'Reoperation For any reason', null, '3');
+INSERT INTO `complication` VALUES ('4', 'pneumonia', null, '4');
+INSERT INTO `complication` VALUES ('5', 'prolong intubation', null, '5');
+INSERT INTO `complication` VALUES ('6', 'hemothorax', null, '6');
+INSERT INTO `complication` VALUES ('7', 'pneumothorax', null, '7');
+INSERT INTO `complication` VALUES ('8', 'B-P fistula', null, '8');
+INSERT INTO `complication` VALUES ('9', 'chylothorax', null, '9');
+INSERT INTO `complication` VALUES ('10', 'anastomosis leakage', null, '10');
+INSERT INTO `complication` VALUES ('11', 'ileus', null, '11');
+INSERT INTO `complication` VALUES ('12', 'aspiration', null, '12');
+INSERT INTO `complication` VALUES ('13', 'dysphagia', null, '13');
+INSERT INTO `complication` VALUES ('14', 'Arrthymia', null, '14');
+INSERT INTO `complication` VALUES ('15', 'Others', null, '15');
+
+-- ----------------------------
+-- Table structure for `diagnosis`
+-- ----------------------------
+DROP TABLE IF EXISTS `diagnosis`;
+CREATE TABLE `diagnosis` (
+  `DiagnosisID` int(11) NOT NULL AUTO_INCREMENT,
+  `DiagnosisName` varchar(100) DEFAULT NULL,
+  `isDeleted` char(1) DEFAULT 'N',
+  PRIMARY KEY (`DiagnosisID`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of diagnosis
+-- ----------------------------
+
+
+-- ----------------------------
+-- Table structure for `hospital`
+-- ----------------------------
+DROP TABLE IF EXISTS `hospital`;
+CREATE TABLE `hospital` (
+  `hospitalID` int(11) NOT NULL AUTO_INCREMENT,
+  `hospitalName` varchar(100) DEFAULT NULL,
+  `hospitalOrder` int(11) DEFAULT '0',
+  `hospitalLevel` char(1) DEFAULT '1',
+  `isDeleted` char(1) DEFAULT 'N',
+  PRIMARY KEY (`hospitalID`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of hospital
+-- ----------------------------
+INSERT INTO `hospital` VALUES ('3', '馬偕紀念醫院', '1', null, 'N');
+
+-- ----------------------------
+-- Table structure for `news`
+-- ----------------------------
+DROP TABLE IF EXISTS `news`;
+CREATE TABLE `news` (
+  `nid` int(11) NOT NULL AUTO_INCREMENT,
+  `subject` varchar(500) DEFAULT NULL,
+  `content` text,
+  `attachment` varchar(200) DEFAULT NULL,
+  `publishdate` date DEFAULT NULL,
+  `isDeleted` char(1) DEFAULT 'N',
+  `isOnline` char(1) DEFAULT 'Y',
+  `isOuter` char(1) DEFAULT 'Y',
+  `isInner` char(1) DEFAULT 'Y',
+  PRIMARY KEY (`nid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of news
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `patienthistory`
+-- ----------------------------
+DROP TABLE IF EXISTS `patienthistory`;
+CREATE TABLE `patienthistory` (
+  `patientID` int(11) NOT NULL AUTO_INCREMENT,
+  `patientHospital` varchar(50) DEFAULT NULL,
+  `patientSSN` varchar(20) DEFAULT NULL,
+  `patientChartNumber` varchar(15) DEFAULT NULL,
+  `patientName` varchar(50) DEFAULT NULL,
+  `patientBirthday` date DEFAULT NULL,
+  `patientAge` float DEFAULT NULL,
+  `patientAgeUnit` char(1) DEFAULT '3',
+  `patientGender` char(1) DEFAULT NULL,
+  `patientSurgeon` varchar(20) DEFAULT '',
+  `patientSurgeon2` varchar(20) DEFAULT '',
+  `patientSurgeon3` varchar(20) DEFAULT '',
+  `patientSurgeon4` varchar(20) DEFAULT '',
+  `patientSurgeon5` varchar(20) DEFAULT NULL,
+  `patientSurgeon_id` varchar(20) DEFAULT NULL,
+  `patientSurgeon_id2` varchar(20) DEFAULT NULL,
+  `patientSurgeon_id3` varchar(20) DEFAULT NULL,
+  `patientSurgeon_id4` varchar(20) DEFAULT NULL,
+  `patientSurgeon_id5` varchar(20) DEFAULT NULL,
+  `patientSurgeon_associalid` varchar(20) DEFAULT NULL,
+  `patientSurgeon_associalid2` varchar(20) DEFAULT NULL,
+  `patientSurgeon_associalid3` varchar(20) DEFAULT NULL,
+  `patientSurgeon_associalid4` varchar(20) DEFAULT NULL,
+  `patientSurgeon_associalid5` varchar(20) DEFAULT NULL,
+  `ReOperation` int(11) DEFAULT '0',
+  `patientOpDate` date DEFAULT NULL,
+  `AdmissionDate` date DEFAULT NULL,
+  `DischargeDate` date DEFAULT NULL,
+  `patientIsICUAdmission` char(1) DEFAULT NULL,
+  `LOS` char(10) DEFAULT NULL,
+  `ICUAdmissionDate` date DEFAULT NULL,
+  `ICUDischargeDate` date DEFAULT NULL,
+  `ICU_LOS` char(10) DEFAULT NULL,
+  `ExtubationDate` date DEFAULT NULL,
+  `patientAssociatedDisease` text,
+  `diseaseType` char(2) DEFAULT NULL,
+  `Procedure1` varchar(500) DEFAULT NULL,
+  `Procedure2` varchar(500) DEFAULT NULL,
+  `Procedure3` varchar(500) DEFAULT NULL,
+  `Procedure4` varchar(500) DEFAULT NULL,
+  `Procedure5` varchar(500) DEFAULT NULL,
+  `Procedure_id1` char(10) DEFAULT NULL,
+  `Procedure_id2` char(10) DEFAULT NULL,
+  `Procedure_id3` char(10) DEFAULT NULL,
+  `Procedure_id4` char(10) DEFAULT NULL,
+  `Procedure_id5` char(10) DEFAULT NULL,
+  `Procedure_Others` text,
+  `Diagnosis1` varchar(500) DEFAULT '',
+  `Diagnosis2` varchar(500) DEFAULT '',
+  `Diagnosis3` varchar(500) DEFAULT '',
+  `Diagnosis4` varchar(500) DEFAULT '',
+  `Diagnosis5` varchar(500) DEFAULT '',
+  `Diagnosis_id1` char(10) DEFAULT NULL,
+  `Diagnosis_id2` char(10) DEFAULT NULL,
+  `Diagnosis_id3` char(10) DEFAULT NULL,
+  `Diagnosis_id4` char(10) DEFAULT NULL,
+  `Diagnosis_id5` char(10) DEFAULT NULL,
+  `DiagnosisOthers` text,
+  `operationOthersOperation` text,
+  `ProcedureType1` char(10) DEFAULT '',
+  `ProcedureType2` char(10) DEFAULT '',
+  `ProcedureType3` char(10) DEFAULT '',
+  `ProcedureType4` char(10) DEFAULT '',
+  `ProcedureType5` char(10) DEFAULT '',
+  `ProcedureTypeName1` varchar(100) DEFAULT NULL,
+  `ProcedureTypeName2` varchar(100) DEFAULT NULL,
+  `ProcedureTypeName3` varchar(100) DEFAULT NULL,
+  `ProcedureTypeName4` varchar(100) DEFAULT NULL,
+  `ProcedureTypeName5` varchar(100) DEFAULT NULL,
+  `CancerLSHeight` char(10) DEFAULT NULL,
+  `CancerLSWeight` char(10) DEFAULT NULL,
+  `CancerLSSmokingAmount` char(10) DEFAULT NULL,
+  `CancerLSSmokingYear` char(10) DEFAULT NULL,
+  `CancerLSSmokingQuitYear` char(10) DEFAULT NULL,
+  `CancerLSBetelNutsAmount` char(10) DEFAULT NULL,
+  `CancerLSBetelNutsYear` char(10) DEFAULT NULL,
+  `CancerLSBetelNutsQuitYear` char(10) DEFAULT NULL,
+  `CancerLSDrinking` char(10) DEFAULT NULL,
+  `CancerLSKPS_ECOG` char(10) DEFAULT NULL,
+  `CancerClinical_T` char(10) DEFAULT NULL,
+  `CancerClinical_N` char(10) DEFAULT NULL,
+  `CancerClinical_M` char(10) DEFAULT NULL,
+  `CancerClinical_StageGroup` char(10) DEFAULT NULL,
+  `CancerPathological_T` char(10) DEFAULT NULL,
+  `CancerPathological_N` char(10) DEFAULT NULL,
+  `CancerPathological_M` char(10) DEFAULT NULL,
+  `CancerPathological_Stage` char(10) DEFAULT NULL,
+  `CancerStage_memo` text,
+  `CancerSysDxDate` varchar(20) DEFAULT NULL,
+  `CancerRadiotherapy_initialDate` varchar(20) DEFAULT NULL,
+  `CancerRadiotherapy_endDate` varchar(20) DEFAULT NULL,
+  `CancerChemotherapy_PreCT` varchar(20) DEFAULT NULL,
+  `CancerChemotherapy_CT` varchar(20) DEFAULT NULL,
+  `CancerChemotherapy_initialDate` varchar(20) DEFAULT NULL,
+  `CancerTargetTherapy_PreTx` varchar(20) DEFAULT NULL,
+  `CancerTargetTherapy_Tx` varchar(20) DEFAULT NULL,
+  `CancerTargetTherapy_initialDate` varchar(20) DEFAULT NULL,
+  `CancerHormoneTherapy_PreTx` varchar(20) DEFAULT NULL,
+  `CancerHormoneTherapy_Tx` varchar(20) DEFAULT NULL,
+  `CancerHormoneTherapy_initialDate` varchar(20) DEFAULT NULL,
+  `CancerImmunotherapy_PreImm` varchar(20) DEFAULT NULL,
+  `CancerImmunotherapy_Imm` varchar(20) DEFAULT NULL,
+  `CancerImmunotherapy_initialDate` varchar(20) DEFAULT NULL,
+  `outcomeDeath` char(1) DEFAULT NULL,
+  `outcomeDeathDate` char(20) DEFAULT NULL,
+  `outcomeDeathMemo` varchar(200) DEFAULT NULL,
+  `outcomeMortalityCheck` char(1) DEFAULT NULL,
+  `outcomeMortalityNote` varchar(200) DEFAULT NULL,
+  `outcomeInfectionCheck` char(1) DEFAULT 'N',
+  `outcomeInfectionNote` varchar(200) DEFAULT NULL,
+  `outcomeReoperationCheck` char(1) DEFAULT NULL,
+  `outcomeReoperationNote` varchar(200) DEFAULT NULL,
+  `outcomePneumoniaCheck` char(1) DEFAULT NULL,
+  `outcomePneumoniaNote` varchar(200) DEFAULT NULL,
+  `outcomeIntubationCheck` char(1) DEFAULT NULL,
+  `outcomeIntubationNote` varchar(200) DEFAULT NULL,
+  `outcomeHemothoraxCheck` char(1) DEFAULT NULL,
+  `outcomeHemothoraxNote` varchar(200) DEFAULT NULL,
+  `outcomePneumothoraxCheck` char(1) DEFAULT NULL,
+  `outcomePneumothoraxNote` varchar(200) DEFAULT NULL,
+  `outcomeBPFistulaCheck` char(1) DEFAULT NULL,
+  `outcomeBPFistulaNote` varchar(200) DEFAULT NULL,
+  `outcomeChylothoraxCheck` char(1) DEFAULT NULL,
+  `outcomeChylothoraxNote` varchar(200) DEFAULT NULL,
+  `outcomeAnastomosisCheck` char(1) DEFAULT NULL,
+  `outcomeAnastomosisNote` varchar(200) DEFAULT NULL,
+  `outcomeIleusCheck` char(1) DEFAULT NULL,
+  `outcomeIleusNote` varchar(200) DEFAULT NULL,
+  `outcomeAspirationCheck` char(1) DEFAULT NULL,
+  `outcomeAspirationNote` varchar(200) DEFAULT NULL,
+  `outcomeDysphagiaCheck` char(1) DEFAULT NULL,
+  `outcomeDysphagiaNote` varchar(200) DEFAULT NULL,
+  `outcomeArrthymiaCheck` char(1) DEFAULT NULL,
+  `outcomeArrthymiaNote` varchar(200) DEFAULT NULL,
+  `outcomeOthersCheck` char(1) DEFAULT NULL,
+  `outcomeOthersNote` varchar(200) DEFAULT NULL,
+  `isDeleted` char(1) DEFAULT NULL,
+  `outcomeStatus` varchar(50) DEFAULT '',
+  `createPerson` int(11) DEFAULT NULL,
+  `createTime` datetime DEFAULT NULL,
+  `modifyPerson` int(11) DEFAULT NULL,
+  `modifyTime` datetime DEFAULT NULL,
+  `patientHospitalUUID` char(32) DEFAULT NULL,
+  `agreement` varchar(100) DEFAULT NULL,
+  `hospitalagreement` varchar(100) DEFAULT NULL,
+  `isSaved` int(1) DEFAULT NULL,
+  `modifiedFlag` int(11) DEFAULT NULL,
+  PRIMARY KEY (`patientID`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of patienthistory
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `patientinformation`
+-- ----------------------------
+DROP TABLE IF EXISTS `patientinformation`;
+CREATE TABLE `patientinformation` (
+  `patientID` int(11) NOT NULL AUTO_INCREMENT,
+  `patientHospital` varchar(50) DEFAULT NULL,
+  `patientSSN` varchar(20) DEFAULT NULL,
+  `patientChartNumber` varchar(15) DEFAULT NULL,
+  `patientName` varchar(50) DEFAULT NULL,
+  `patientBirthday` date DEFAULT NULL,
+  `patientAge` float DEFAULT NULL,
+  `patientAgeUnit` char(1) DEFAULT '3',
+  `patientGender` char(1) DEFAULT NULL,
+  `patientSurgeon` varchar(20) DEFAULT '',
+  `patientSurgeon2` varchar(20) DEFAULT '',
+  `patientSurgeon3` varchar(20) DEFAULT '',
+  `patientSurgeon4` varchar(20) DEFAULT '',
+  `patientSurgeon5` varchar(20) DEFAULT NULL,
+  `patientSurgeon_id` varchar(20) DEFAULT NULL,
+  `patientSurgeon_id2` varchar(20) DEFAULT NULL,
+  `patientSurgeon_id3` varchar(20) DEFAULT NULL,
+  `patientSurgeon_id4` varchar(20) DEFAULT NULL,
+  `patientSurgeon_id5` varchar(20) DEFAULT NULL,
+  `patientSurgeon_associalid` varchar(20) DEFAULT NULL,
+  `patientSurgeon_associalid2` varchar(20) DEFAULT NULL,
+  `patientSurgeon_associalid3` varchar(20) DEFAULT NULL,
+  `patientSurgeon_associalid4` varchar(20) DEFAULT NULL,
+  `patientSurgeon_associalid5` varchar(20) DEFAULT NULL,
+  `ReOperation` int(11) DEFAULT '0',
+  `patientOpDate` date DEFAULT NULL,
+  `AdmissionDate` date DEFAULT NULL,
+  `DischargeDate` date DEFAULT NULL,
+  `patientIsICUAdmission` char(1) DEFAULT NULL,
+  `LOS` char(10) DEFAULT NULL,
+  `ICUAdmissionDate` date DEFAULT NULL,
+  `ICUDischargeDate` date DEFAULT NULL,
+  `ICU_LOS` char(10) DEFAULT NULL,
+  `ExtubationDate` date DEFAULT NULL,
+  `patientAssociatedDisease` text,
+  `diseaseType` char(2) DEFAULT NULL,
+  `Procedure1` varchar(500) DEFAULT NULL,
+  `Procedure2` varchar(500) DEFAULT NULL,
+  `Procedure3` varchar(500) DEFAULT NULL,
+  `Procedure4` varchar(500) DEFAULT NULL,
+  `Procedure5` varchar(500) DEFAULT NULL,
+  `Procedure_id1` char(10) DEFAULT NULL,
+  `Procedure_id2` char(10) DEFAULT NULL,
+  `Procedure_id3` char(10) DEFAULT NULL,
+  `Procedure_id4` char(10) DEFAULT NULL,
+  `Procedure_id5` char(10) DEFAULT NULL,
+  `Procedure_Others` text,
+  `Diagnosis1` varchar(500) DEFAULT '',
+  `Diagnosis2` varchar(500) DEFAULT '',
+  `Diagnosis3` varchar(500) DEFAULT '',
+  `Diagnosis4` varchar(500) DEFAULT '',
+  `Diagnosis5` varchar(500) DEFAULT '',
+  `Diagnosis_id1` char(10) DEFAULT NULL,
+  `Diagnosis_id2` char(10) DEFAULT NULL,
+  `Diagnosis_id3` char(10) DEFAULT NULL,
+  `Diagnosis_id4` char(10) DEFAULT NULL,
+  `Diagnosis_id5` char(10) DEFAULT NULL,
+  `DiagnosisOthers` text,
+  `operationOthersOperation` text,
+  `ProcedureType1` char(10) DEFAULT '',
+  `ProcedureType2` char(10) DEFAULT '',
+  `ProcedureType3` char(10) DEFAULT '',
+  `ProcedureType4` char(10) DEFAULT '',
+  `ProcedureType5` char(10) DEFAULT '',
+  `ProcedureTypeName1` varchar(100) DEFAULT NULL,
+  `ProcedureTypeName2` varchar(100) DEFAULT NULL,
+  `ProcedureTypeName3` varchar(100) DEFAULT NULL,
+  `ProcedureTypeName4` varchar(100) DEFAULT NULL,
+  `ProcedureTypeName5` varchar(100) DEFAULT NULL,
+  `CancerLSHeight` char(10) DEFAULT NULL,
+  `CancerLSWeight` char(10) DEFAULT NULL,
+  `CancerLSSmokingAmount` char(10) DEFAULT NULL,
+  `CancerLSSmokingYear` char(10) DEFAULT NULL,
+  `CancerLSSmokingQuitYear` char(10) DEFAULT NULL,
+  `CancerLSBetelNutsAmount` char(10) DEFAULT NULL,
+  `CancerLSBetelNutsYear` char(10) DEFAULT NULL,
+  `CancerLSBetelNutsQuitYear` char(10) DEFAULT NULL,
+  `CancerLSDrinking` char(10) DEFAULT NULL,
+  `CancerLSKPS_ECOG` char(10) DEFAULT NULL,
+  `CancerClinical_T` char(10) DEFAULT NULL,
+  `CancerClinical_N` char(10) DEFAULT NULL,
+  `CancerClinical_M` char(10) DEFAULT NULL,
+  `CancerClinical_StageGroup` char(10) DEFAULT NULL,
+  `CancerPathological_T` char(10) DEFAULT NULL,
+  `CancerPathological_N` char(10) DEFAULT NULL,
+  `CancerPathological_M` char(10) DEFAULT NULL,
+  `CancerPathological_Stage` char(10) DEFAULT NULL,
+  `CancerStage_memo` text,
+  `CancerSysDxDate` varchar(20) DEFAULT NULL,
+  `CancerRadiotherapy_initialDate` varchar(20) DEFAULT NULL,
+  `CancerRadiotherapy_endDate` varchar(20) DEFAULT NULL,
+  `CancerChemotherapy_PreCT` varchar(20) DEFAULT NULL,
+  `CancerChemotherapy_CT` varchar(20) DEFAULT NULL,
+  `CancerChemotherapy_initialDate` varchar(20) DEFAULT NULL,
+  `CancerTargetTherapy_PreTx` varchar(20) DEFAULT NULL,
+  `CancerTargetTherapy_Tx` varchar(20) DEFAULT NULL,
+  `CancerTargetTherapy_initialDate` varchar(20) DEFAULT NULL,
+  `CancerHormoneTherapy_PreTx` varchar(20) DEFAULT NULL,
+  `CancerHormoneTherapy_Tx` varchar(20) DEFAULT NULL,
+  `CancerHormoneTherapy_initialDate` varchar(20) DEFAULT NULL,
+  `CancerImmunotherapy_PreImm` varchar(20) DEFAULT NULL,
+  `CancerImmunotherapy_Imm` varchar(20) DEFAULT NULL,
+  `CancerImmunotherapy_initialDate` varchar(20) DEFAULT NULL,
+  `outcomeDeath` char(1) DEFAULT NULL,
+  `outcomeDeathDate` char(20) DEFAULT NULL,
+  `outcomeDeathMemo` varchar(200) DEFAULT NULL,
+  `outcomeMortalityCheck` char(1) DEFAULT NULL,
+  `outcomeMortalityNote` varchar(200) DEFAULT NULL,
+  `outcomeInfectionCheck` char(1) DEFAULT 'N',
+  `outcomeInfectionNote` varchar(200) DEFAULT NULL,
+  `outcomeReoperationCheck` char(1) DEFAULT NULL,
+  `outcomeReoperationNote` varchar(200) DEFAULT NULL,
+  `outcomePneumoniaCheck` char(1) DEFAULT NULL,
+  `outcomePneumoniaNote` varchar(200) DEFAULT NULL,
+  `outcomeIntubationCheck` char(1) DEFAULT NULL,
+  `outcomeIntubationNote` varchar(200) DEFAULT NULL,
+  `outcomeHemothoraxCheck` char(1) DEFAULT NULL,
+  `outcomeHemothoraxNote` varchar(200) DEFAULT NULL,
+  `outcomePneumothoraxCheck` char(1) DEFAULT NULL,
+  `outcomePneumothoraxNote` varchar(200) DEFAULT NULL,
+  `outcomeBPFistulaCheck` char(1) DEFAULT NULL,
+  `outcomeBPFistulaNote` varchar(200) DEFAULT NULL,
+  `outcomeChylothoraxCheck` char(1) DEFAULT NULL,
+  `outcomeChylothoraxNote` varchar(200) DEFAULT NULL,
+  `outcomeAnastomosisCheck` char(1) DEFAULT NULL,
+  `outcomeAnastomosisNote` varchar(200) DEFAULT NULL,
+  `outcomeIleusCheck` char(1) DEFAULT NULL,
+  `outcomeIleusNote` varchar(200) DEFAULT NULL,
+  `outcomeAspirationCheck` char(1) DEFAULT NULL,
+  `outcomeAspirationNote` varchar(200) DEFAULT NULL,
+  `outcomeDysphagiaCheck` char(1) DEFAULT NULL,
+  `outcomeDysphagiaNote` varchar(200) DEFAULT NULL,
+  `outcomeArrthymiaCheck` char(1) DEFAULT NULL,
+  `outcomeArrthymiaNote` varchar(200) DEFAULT NULL,
+  `outcomeOthersCheck` char(1) DEFAULT NULL,
+  `outcomeOthersNote` varchar(200) DEFAULT NULL,
+  `isDeleted` char(1) DEFAULT NULL,
+  `outcomeStatus` varchar(50) DEFAULT '',
+  `createPerson` int(11) DEFAULT NULL,
+  `createTime` datetime DEFAULT NULL,
+  `modifyPerson` int(11) DEFAULT NULL,
+  `modifyTime` datetime DEFAULT NULL,
+  `patientHospitalUUID` char(32) DEFAULT NULL,
+  `agreement` varchar(100) DEFAULT NULL,
+  `hospitalagreement` varchar(100) DEFAULT NULL,
+  `isSaved` int(1) DEFAULT NULL,
+  `modifiedFlag` int(11) DEFAULT NULL,
+  PRIMARY KEY (`patientID`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of patientinformation
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `setting`
+-- ----------------------------
+DROP TABLE IF EXISTS `setting`;
+CREATE TABLE `setting` (
+  `sid` int(11) NOT NULL AUTO_INCREMENT,
+  `c1` char(1) DEFAULT NULL,
+  `c2` char(1) DEFAULT NULL,
+  `c3` char(1) DEFAULT NULL,
+  `c4` char(1) DEFAULT NULL,
+  `c5` char(1) DEFAULT NULL,
+  `sp1` char(1) DEFAULT NULL,
+  `sp2` char(1) DEFAULT NULL,
+  `sp3` char(1) DEFAULT NULL,
+  `sp4` char(1) DEFAULT NULL,
+  `sp5` char(1) DEFAULT NULL,
+  PRIMARY KEY (`sid`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of setting
+-- ----------------------------
+INSERT INTO `setting` VALUES ('1', '1', '1', '1', '0', '0', '1', '1', '0', '0', '0');
+
+-- ----------------------------
+-- Table structure for `surgerydiagnosis`
+-- ----------------------------
+DROP TABLE IF EXISTS `surgerydiagnosis`;
+CREATE TABLE `surgerydiagnosis` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `category` varchar(200) DEFAULT NULL,
+  `subject` varchar(500) DEFAULT NULL,
+  `order` int(11) DEFAULT NULL,
+  `code` char(10) DEFAULT NULL,
+  `categoryorder` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of surgerydiagnosis
+-- ----------------------------
+INSERT INTO `surgerydiagnosis` VALUES ('1', 'Lung', 'Lung cancer', '1', '01-01', '1');
+INSERT INTO `surgerydiagnosis` VALUES ('2', 'Lung', 'Pneumothorax', '2', '01-02', '1');
+INSERT INTO `surgerydiagnosis` VALUES ('3', 'Lung', 'Empyema', '3', '01-03', '1');
+INSERT INTO `surgerydiagnosis` VALUES ('4', 'Lung', 'Lung tumor', '4', '01-04', '1');
+INSERT INTO `surgerydiagnosis` VALUES ('5', 'Lung', 'Pulmonary sequestration', '5', '01-05', '1');
+INSERT INTO `surgerydiagnosis` VALUES ('6', 'Lung', 'Lung abscess', '6', '01-06', '1');
+INSERT INTO `surgerydiagnosis` VALUES ('7', 'Lung', 'Bullous Diseases', '7', '01-07', '1');
+INSERT INTO `surgerydiagnosis` VALUES ('8', 'Esophagus', 'Esophageal tumor', '8', '02-01', '2');
+INSERT INTO `surgerydiagnosis` VALUES ('9', 'Esophagus', 'Esophageal cancer', '9', '02-02', '2');
+INSERT INTO `surgerydiagnosis` VALUES ('10', 'Esophagus', 'Achalasia', '10', '02-03', '2');
+INSERT INTO `surgerydiagnosis` VALUES ('11', 'Esophagus', 'Hypopharyngeal cancer', '11', '02-04', '2');
+INSERT INTO `surgerydiagnosis` VALUES ('12', 'Esophagus', 'Esophageal stenosis', '12', '02-05', '2');
+INSERT INTO `surgerydiagnosis` VALUES ('13', 'Mediastinum', 'Thymoma', '13', '03-01', '3');
+INSERT INTO `surgerydiagnosis` VALUES ('14', 'Mediastinum', 'Thymic cancer', '14', '03-02', '3');
+INSERT INTO `surgerydiagnosis` VALUES ('15', 'Mediastinum', 'Teratoma', '15', '03-03', '3');
+INSERT INTO `surgerydiagnosis` VALUES ('16', 'Mediastinum', 'Thyroid tumor', '16', '03-04', '3');
+INSERT INTO `surgerydiagnosis` VALUES ('17', 'Mediastinum', 'Lymphoma', '17', '03-05', '3');
+INSERT INTO `surgerydiagnosis` VALUES ('18', 'Mediastinum', 'Schwannoma', '18', '03-06', '3');
+INSERT INTO `surgerydiagnosis` VALUES ('19', 'Mediastinum', 'Lymphadenopathy', '19', '03-07', '3');
+INSERT INTO `surgerydiagnosis` VALUES ('20', 'Chest Wall', 'Pectus excavatum', '20', '04-01', '4');
+INSERT INTO `surgerydiagnosis` VALUES ('21', 'Chest Wall', 'Rib fracture', '21', '04-02', '4');
+INSERT INTO `surgerydiagnosis` VALUES ('22', 'Chest Wall', 'Osteosarcoma', '22', '04-03', '4');
+INSERT INTO `surgerydiagnosis` VALUES ('23', 'Airway', 'Trachea tumor', '23', '05-01', '5');
+INSERT INTO `surgerydiagnosis` VALUES ('24', 'Airway', 'Trachea stenosis', '24', '05-02', '5');
+INSERT INTO `surgerydiagnosis` VALUES ('25', 'Airway', 'Trachea', '25', '05-03', '5');
+INSERT INTO `surgerydiagnosis` VALUES ('26', 'Airway', 'T-E fistula', '26', '05-04', '5');
+INSERT INTO `surgerydiagnosis` VALUES ('27', 'Airway', 'T-E fistula', '27', '05-05', '5');
+
+-- ----------------------------
+-- Table structure for `surgeryprocedure`
+-- ----------------------------
+DROP TABLE IF EXISTS `surgeryprocedure`;
+CREATE TABLE `surgeryprocedure` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `category` varchar(200) DEFAULT NULL,
+  `subject` varchar(500) DEFAULT NULL,
+  `order` int(11) DEFAULT '0',
+  `code` char(10) DEFAULT NULL,
+  `cancertype` int(2) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=394 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of surgeryprocedure
+-- ----------------------------
+INSERT INTO `surgeryprocedure` VALUES ('202', 'Lung, malignant', 'Pneumonectomy –primary lung cancer', '202', '01-01-01', '1');
+INSERT INTO `surgeryprocedure` VALUES ('203', 'Lung, malignant', 'Bilobectomy–primary lung cancer', '203', '01-02-01', '1');
+INSERT INTO `surgeryprocedure` VALUES ('204', 'Lung, malignant', 'Sleeve Lobectomy–primary lung cancer', '204', '01-03-01', '1');
+INSERT INTO `surgeryprocedure` VALUES ('205', 'Lung, malignant', 'Lobectomy –primary lung cancer', '205', '01-04-01', '1');
+INSERT INTO `surgeryprocedure` VALUES ('206', 'Lung, malignant', 'Segmentectomy–primary lung cancer', '206', '01-05-01', '1');
+INSERT INTO `surgeryprocedure` VALUES ('207', 'Lung, malignant', 'Wedge resection–primary lung cancer', '207', '01-06-01', '1');
+INSERT INTO `surgeryprocedure` VALUES ('208', 'Lung, malignant', 'Mediastinoscopy- lung cancer staging', '208', '01-07-01', '1');
+INSERT INTO `surgeryprocedure` VALUES ('209', 'Lung, malignant', 'Mediastinotomy (Chamberlain Procedure) - lung cancer staging', '209', '01-08-01', '1');
+INSERT INTO `surgeryprocedure` VALUES ('210', 'Lung, malignant', 'VATS for staging', '210', '01-09-01', '1');
+INSERT INTO `surgeryprocedure` VALUES ('211', 'Lung, malignant', 'Metastasectomy –single wedge resection', '211', '01-10-01', '1');
+INSERT INTO `surgeryprocedure` VALUES ('212', 'Lung, malignant', 'Metastasectomy –multiple wedge resection', '212', '01-10-02', '1');
+INSERT INTO `surgeryprocedure` VALUES ('213', 'Lung, malignant', 'Metastasectomy –segmentectomy', '213', '01-10-03', '1');
+INSERT INTO `surgeryprocedure` VALUES ('214', 'Lung, malignant', 'Metastasectomy –Lobectomy', '214', '01-10-04', '1');
+INSERT INTO `surgeryprocedure` VALUES ('215', 'Lung, malignant', 'Misc.', '215', '01-99-01', '1');
+INSERT INTO `surgeryprocedure` VALUES ('216', 'Lung, benign', 'Pneumonectomy', '216', '02-01-01', '2');
+INSERT INTO `surgeryprocedure` VALUES ('217', 'Lung, benign', 'Bilobectomy', '217', '02-02-01', '2');
+INSERT INTO `surgeryprocedure` VALUES ('218', 'Lung, benign', 'Sleeve Lobectomy', '218', '02-03-01', '2');
+INSERT INTO `surgeryprocedure` VALUES ('219', 'Lung, benign', 'Lobectomy', '219', '02-04-01', '2');
+INSERT INTO `surgeryprocedure` VALUES ('220', 'Lung, benign', 'Segmentectomy', '220', '02-05-01', '2');
+INSERT INTO `surgeryprocedure` VALUES ('221', 'Lung, benign', 'Wedge resection', '221', '02-06-01', '2');
+INSERT INTO `surgeryprocedure` VALUES ('222', 'Lung, benign', 'Lung abscess (pneumonotomy/cavernostomy)', '222', '02-07-01', '2');
+INSERT INTO `surgeryprocedure` VALUES ('223', 'Lung, benign', 'Misc.', '223', '02-99-01', '2');
+INSERT INTO `surgeryprocedure` VALUES ('224', 'Mediastinum, malignant', 'Thymothymectomy for thymoma', '224', '03-01-01', '3');
+INSERT INTO `surgeryprocedure` VALUES ('225', 'Mediastinum, malignant', 'Thymothymectomy for thymic carcinoma', '225', '03-02-01', '3');
+INSERT INTO `surgeryprocedure` VALUES ('226', 'Mediastinum, malignant', 'Resection for seminoma', '226', '03-03-01', '3');
+INSERT INTO `surgeryprocedure` VALUES ('227', 'Mediastinum, malignant', 'Resection for non-seminomatous GCT', '227', '03-04-01', '3');
+INSERT INTO `surgeryprocedure` VALUES ('228', 'Mediastinum, malignant', 'Resection of mediastinal neurogenic tumor', '228', '03-05-01', '3');
+INSERT INTO `surgeryprocedure` VALUES ('229', 'Mediastinum, malignant', 'Mediastinoscopy with biopsy', '229', '03-06-01', '3');
+INSERT INTO `surgeryprocedure` VALUES ('230', 'Mediastinum, malignant', 'Mediastinotomy (Chamberlain Procedure) with biopsy', '230', '03-07-01', '3');
+INSERT INTO `surgeryprocedure` VALUES ('231', 'Mediastinum, malignant', 'Misc.', '231', '03-99-01', '3');
+INSERT INTO `surgeryprocedure` VALUES ('232', 'Mediastinum, benign', 'Thymectomy for myasthenia gravis', '232', '04-01-01', '4');
+INSERT INTO `surgeryprocedure` VALUES ('233', 'Mediastinum, benign', 'Mediastinal cyst/tumor resection', '233', '04-02-01', '4');
+INSERT INTO `surgeryprocedure` VALUES ('234', 'Mediastinum, benign', 'Mediastinotomy and drainage', '234', '04-03-01', '4');
+INSERT INTO `surgeryprocedure` VALUES ('235', 'Mediastinum, benign', 'Resection/ benign pleural base or neurogenic tumor', '235', '04-04-01', '4');
+INSERT INTO `surgeryprocedure` VALUES ('236', 'Mediastinum, benign', 'Resection of intercostal neurogenic tumor', '236', '04-05-01', '4');
+INSERT INTO `surgeryprocedure` VALUES ('237', 'Mediastinum, benign', 'Misc.', '237', '04-99-01', '4');
+INSERT INTO `surgeryprocedure` VALUES ('238', 'Esophagus/Cardia/Hypopharyngeal, malignant', 'Esophagectomy & reconstruction (open)', '238', '05-01-01', '5');
+INSERT INTO `surgeryprocedure` VALUES ('239', 'Esophagus/Cardia/Hypopharyngeal, malignant', 'Esophagectomy & reconstruction (Hybrid MIE): VATS+laparotomy', '239', '05-01-21', '5');
+INSERT INTO `surgeryprocedure` VALUES ('240', 'Esophagus/Cardia/Hypopharyngeal, malignant', 'Esophagectomy & reconstruction (Hybrid MIE): Thoracotomy+laparoscopy', '240', '05-01-22', '5');
+INSERT INTO `surgeryprocedure` VALUES ('241', 'Esophagus/Cardia/Hypopharyngeal, malignant', 'Esophagectomy & reconstruction (total MIE) laparoscopy', '241', '05-01-03', '5');
+INSERT INTO `surgeryprocedure` VALUES ('242', 'Esophagus/Cardia/Hypopharyngeal, malignant', 'Hypopharyngectomy/esophagopharyngectomy (open)', '242', '05-02-01', '5');
+INSERT INTO `surgeryprocedure` VALUES ('243', 'Esophagus/Cardia/Hypopharyngeal, malignant', 'Hypopharyngectomy/esophagopharyngectomy (Hybrid MIE): VATS+laparotomy', '243', '05-02-21', '5');
+INSERT INTO `surgeryprocedure` VALUES ('244', 'Esophagus/Cardia/Hypopharyngeal, malignant', 'Hypopharyngectomy/esophagopharyngectomy (Hybrid MIE): Thoracotomy+laparoscopy', '244', '05-02-22', '5');
+INSERT INTO `surgeryprocedure` VALUES ('245', 'Esophagus/Cardia/Hypopharyngeal, malignant', 'Hypopharyngectomy/esophagopharyngectomy (total MIE) laparoscopy', '245', '05-02-23', '5');
+INSERT INTO `surgeryprocedure` VALUES ('246', 'Esophagus/Cardia/Hypopharyngeal, malignant', 'EMR/ESD', '246', '05-03-01', '5');
+INSERT INTO `surgeryprocedure` VALUES ('247', 'Esophagus/Cardia/Hypopharyngeal, malignant', 'By-pass procedures', '247', '05-04-01', '5');
+INSERT INTO `surgeryprocedure` VALUES ('248', 'Esophagus/Cardia/Hypopharyngeal, malignant', 'Stenting', '248', '05-05-01', '5');
+INSERT INTO `surgeryprocedure` VALUES ('249', 'Esophagus/Cardia/Hypopharyngeal, malignant', 'Misc.', '249', '05-99-01', '5');
+INSERT INTO `surgeryprocedure` VALUES ('250', 'Esophagus/Cardia, benign', 'Esophagectomy only', '250', '06-01-01', '6');
+INSERT INTO `surgeryprocedure` VALUES ('251', 'Esophagus/Cardia, benign', 'Esophagectomy + gastrectomy (including partial gastrectomy)', '251', '06-01-02', '6');
+INSERT INTO `surgeryprocedure` VALUES ('252', 'Esophagus/Cardia, benign', 'Esophagectomy + gastrectomy + others (such as duodenum, whipple operation)', '252', '06-01-03', '6');
+INSERT INTO `surgeryprocedure` VALUES ('253', 'Esophagus/Cardia, benign', 'Esophageal reconstruction With gastric tube', '253', '06-02-01', '6');
+INSERT INTO `surgeryprocedure` VALUES ('254', 'Esophagus/Cardia, benign', 'Esophageal reconstruction With left colon', '254', '06-02-02', '6');
+INSERT INTO `surgeryprocedure` VALUES ('255', 'Esophagus/Cardia, benign', 'Esophageal reconstruction With right colon', '255', '06-02-03', '6');
+INSERT INTO `surgeryprocedure` VALUES ('256', 'Esophagus/Cardia, benign', 'Esophageal reconstruction With intestine', '256', '06-02-04', '6');
+INSERT INTO `surgeryprocedure` VALUES ('257', 'Esophagus/Cardia, benign', 'Esophageal reconstruction With skin flap', '257', '06-02-05', '6');
+INSERT INTO `surgeryprocedure` VALUES ('258', 'Esophagus/Cardia, benign', 'Benign tumor resection By EMR/ESD', '258', '06-03-01', '6');
+INSERT INTO `surgeryprocedure` VALUES ('259', 'Esophagus/Cardia, benign', 'Benign tumor resection By esophagotomy', '259', '06-03-02', '6');
+INSERT INTO `surgeryprocedure` VALUES ('260', 'Esophagus/Cardia, benign', 'Esophageal caustic stricture By dilation', '260', '06-04-01', '6');
+INSERT INTO `surgeryprocedure` VALUES ('261', 'Esophagus/Cardia, benign', 'Esophageal caustic stricture By stenting', '261', '06-04-02', '6');
+INSERT INTO `surgeryprocedure` VALUES ('262', 'Esophagus/Cardia, benign', 'Esophageal perforation, no resection,Repair and drainage', '262', '06-05-01', '6');
+INSERT INTO `surgeryprocedure` VALUES ('263', 'Esophagus/Cardia, benign', 'Esophageal perforation, no resection,Stenting', '263', '06-05-02', '6');
+INSERT INTO `surgeryprocedure` VALUES ('264', 'Esophagus/Cardia, benign', 'Esophageal functional disorders (such as achalasia, diffuse esophageal spasm),Myotomy only', '264', '06-06-01', '6');
+INSERT INTO `surgeryprocedure` VALUES ('265', 'Esophagus/Cardia, benign', 'Esophageal functional disorders (such as achalasia, diffuse esophageal spasm),Myotomy only,POEM', '265', '06-06-11', '6');
+INSERT INTO `surgeryprocedure` VALUES ('266', 'Esophagus/Cardia, benign', 'Esophageal functional disorders (such as achalasia, diffuse esophageal spasm),Myotomy only,Via chest (thoracotomy/VATS)', '266', '06-06-12', '6');
+INSERT INTO `surgeryprocedure` VALUES ('267', 'Esophagus/Cardia, benign', 'Esophageal functional disorders (such as achalasia, diffuse esophageal spasm),Myotomy only,Via abdomen (laparotomy/laparoscope)', '267', '06-06-13', '6');
+INSERT INTO `surgeryprocedure` VALUES ('268', 'Esophagus/Cardia, benign', 'Esophageal functional disorders (such as achalasia, diffuse esophageal spasm),Myotomy only,Combined chest and abdomen', '268', '06-06-14', '6');
+INSERT INTO `surgeryprocedure` VALUES ('269', 'Esophagus/Cardia, benign', 'Esophageal functional disorders (such as achalasia, diffuse esophageal spasm),Myotomy + fundoplication', '269', '06-06-02', '6');
+INSERT INTO `surgeryprocedure` VALUES ('270', 'Esophagus/Cardia, benign', 'Esophageal functional disorders (such as achalasia, diffuse esophageal spasm),Myotomy + fundoplication,Via panendoscope', '270', '06-06-21', '6');
+INSERT INTO `surgeryprocedure` VALUES ('271', 'Esophagus/Cardia, benign', 'Esophageal functional disorders (such as achalasia, diffuse esophageal spasm),Myotomy + fundoplication,Via chest (thoracotomy/VATS)', '271', '06-06-22', '6');
+INSERT INTO `surgeryprocedure` VALUES ('272', 'Esophagus/Cardia, benign', 'Esophageal functional disorders (such as achalasia, diffuse esophageal spasm),Myotomy + fundoplication,Via abdomen (laparotomy/laparoscope)', '272', '06-06-23', '6');
+INSERT INTO `surgeryprocedure` VALUES ('273', 'Esophagus/Cardia, benign', 'Esophageal functional disorders (such as achalasia, diffuse esophageal spasm),Myotomy + fundoplication,Combined chest and abdomen', '273', '06-06-24', '6');
+INSERT INTO `surgeryprocedure` VALUES ('274', 'Esophagus/Cardia, benign', 'esophagectomy', '274', '06-06-03', '6');
+INSERT INTO `surgeryprocedure` VALUES ('275', 'Esophagus/Cardia, benign', 'Esophageal hiatal  hernia repair only Via panendoscope', '275', '06-07-11', '6');
+INSERT INTO `surgeryprocedure` VALUES ('276', 'Esophagus/Cardia, benign', 'Esophageal hiatal  hernia repair only Via chest (thoracotomy/VATS)', '276', '06-07-12', '6');
+INSERT INTO `surgeryprocedure` VALUES ('277', 'Esophagus/Cardia, benign', 'Esophageal hiatal  hernia repair only Via abdomen (laparotomy/laparoscope)', '277', '06-07-13', '6');
+INSERT INTO `surgeryprocedure` VALUES ('278', 'Esophagus/Cardia, benign', 'Esophageal hiatal  hernia repair only Combined chest and abdomen', '278', '06-07-14', '6');
+INSERT INTO `surgeryprocedure` VALUES ('279', 'Esophagus/Cardia, benign', 'hernia repair + fundoplication Via panendoscope', '279', '06-07-21', '6');
+INSERT INTO `surgeryprocedure` VALUES ('280', 'Esophagus/Cardia, benign', 'hernia repair + fundoplication Via chest (thoracotomy/VATS)', '280', '06-07-22', '6');
+INSERT INTO `surgeryprocedure` VALUES ('281', 'Esophagus/Cardia, benign', 'hernia repair + fundoplication Via abdomen (laparotomy/laparoscope)', '281', '06-07-23', '6');
+INSERT INTO `surgeryprocedure` VALUES ('282', 'Esophagus/Cardia, benign', 'hernia repair + fundoplication Combined chest and abdomen', '282', '06-07-24', '6');
+INSERT INTO `surgeryprocedure` VALUES ('283', 'Esophagus/Cardia, benign', 'Esophagostomy from cervical', '283', '06-08-01', '6');
+INSERT INTO `surgeryprocedure` VALUES ('284', 'Esophagus/Cardia, benign', 'Esophagostomy from chest', '284', '06-08-02', '6');
+INSERT INTO `surgeryprocedure` VALUES ('285', 'Esophagus/Cardia, benign', 'Misc.', '285', '06-99-01', '6');
+INSERT INTO `surgeryprocedure` VALUES ('286', 'Trachea', 'Sleeve resection & reconstruction', '286', '07-01-01', '7');
+INSERT INTO `surgeryprocedure` VALUES ('287', 'Trachea', 'Tracheobronchoplasty (Surgical)', '287', '07-02-01', '7');
+INSERT INTO `surgeryprocedure` VALUES ('288', 'Trachea', 'Tracheobronchoplasty (Stenting/T-tube)', '288', '07-03-01', '7');
+INSERT INTO `surgeryprocedure` VALUES ('289', 'Trachea', 'Tracheostomy (open)', '289', '07-04-01', '7');
+INSERT INTO `surgeryprocedure` VALUES ('290', 'Trachea', 'Tracheostomy (percutaneous)', '290', '07-04-02', '7');
+INSERT INTO `surgeryprocedure` VALUES ('291', 'Trachea', 'Misc.', '291', '07-99-01', '7');
+INSERT INTO `surgeryprocedure` VALUES ('292', 'Pleura', 'Decortication for mesothelioma', '292', '08-01-01', '8');
+INSERT INTO `surgeryprocedure` VALUES ('293', 'Pleura', 'Extrapleural pneumonectomy for mesothelioma', '293', '08-02-01', '8');
+INSERT INTO `surgeryprocedure` VALUES ('294', 'Pleura', 'Sympathectomy', '294', '08-03-01', '8');
+INSERT INTO `surgeryprocedure` VALUES ('295', 'Pleura', 'Pneumothorax (wedge + pleurodesis or pleurodesis alone)', '295', '08-04-01', '8');
+INSERT INTO `surgeryprocedure` VALUES ('296', 'Pleura', 'Decortication for empyema', '296', '08-05-01', '8');
+INSERT INTO `surgeryprocedure` VALUES ('297', 'Pleura', 'pneumolysis', '297', '08-06-01', '8');
+INSERT INTO `surgeryprocedure` VALUES ('298', 'Pleura', 'Misc.', '298', '08-99-01', '8');
+INSERT INTO `surgeryprocedure` VALUES ('299', 'Diaphragm', 'Resection & reconstruction ', '299', '09-01-01', '9');
+INSERT INTO `surgeryprocedure` VALUES ('300', 'Diaphragm', 'Plication without resection ', '300', '09-02-01', '9');
+INSERT INTO `surgeryprocedure` VALUES ('301', 'Diaphragm', 'Plication without repair', '301', '09-02-02', '9');
+INSERT INTO `surgeryprocedure` VALUES ('302', 'Diaphragm', 'repair only (no resection)-congenital', '302', '09-03-01', '9');
+INSERT INTO `surgeryprocedure` VALUES ('303', 'Diaphragm', 'repair only (no resection)-traumatic', '303', '09-03-02', '9');
+INSERT INTO `surgeryprocedure` VALUES ('304', 'End stage lung disease', 'Single lung/Lobar transplantation', '304', '10-01-01', '10');
+INSERT INTO `surgeryprocedure` VALUES ('305', 'End stage lung disease', 'Double/Bilateral lung transplantation', '305', '10-01-02', '10');
+INSERT INTO `surgeryprocedure` VALUES ('306', 'End stage lung disease', 'Re-transplantation', '306', '10-01-03', '10');
+INSERT INTO `surgeryprocedure` VALUES ('307', 'End stage lung disease', 'Lung volume reduction surgery', '307', '10-01-04', '10');
+INSERT INTO `surgeryprocedure` VALUES ('308', 'Chest wall', 'Resection only', '308', '11-01-01', '11');
+INSERT INTO `surgeryprocedure` VALUES ('309', 'Chest wall', 'Resection & reconstruction', '309', '11-02-01', '11');
+INSERT INTO `surgeryprocedure` VALUES ('310', 'Chest wall', 'Debridement', '310', '11-03-01', '11');
+INSERT INTO `surgeryprocedure` VALUES ('311', 'Chest wall', 'Correction of Pectus Excavatum-open modified Ravitch method', '311', '11-04-11', '11');
+INSERT INTO `surgeryprocedure` VALUES ('312', 'Chest wall', 'Correction of Pectus Excavatum-Nuss procedure', '312', '11-04-12', '11');
+INSERT INTO `surgeryprocedure` VALUES ('313', 'Chest wall', 'Correction of Pectus Carinatum', '313', '11-04-02', '11');
+INSERT INTO `surgeryprocedure` VALUES ('314', 'Chest wall', 'Misc.', '314', '11-99-01', '11');
+INSERT INTO `surgeryprocedure` VALUES ('315', 'Miscellaneous', 'Pericardial disease', '315', '12-01-01', '12');
+INSERT INTO `surgeryprocedure` VALUES ('316', 'Miscellaneous', 'Chest trauma / ribs fx', '316', '12-01-02', '12');
+INSERT INTO `surgeryprocedure` VALUES ('317', 'Miscellaneous', 'Misc.', '317', '12-99-01', '12');
+INSERT INTO `surgeryprocedure` VALUES ('318', 'Chemoport', 'Puncture, via subclavian vein', '318', '13-01-01', '13');
+INSERT INTO `surgeryprocedure` VALUES ('319', 'Chemoport', 'Puncture, via jugular vein', '319', '13-01-02', '13');
+INSERT INTO `surgeryprocedure` VALUES ('320', 'Chemoport', 'Puncture, via femoral vein', '320', '13-01-03', '13');
+INSERT INTO `surgeryprocedure` VALUES ('321', 'Chemoport', 'Open-cephalic venotomy', '321', '13-01-04', '13');
+INSERT INTO `surgeryprocedure` VALUES ('322', 'Esophagus/Cardia/Hypopharyngeal, malignant', 'PDT', '248', '05-06-01', '5');
+INSERT INTO `surgeryprocedure` VALUES ('323', 'Esophagus/Cardia/Hypopharyngeal, malignant', 'cryo', '248', '05-07-01', '5');
+INSERT INTO `surgeryprocedure` VALUES ('324', 'Esophagus/Cardia/Hypopharyngeal, malignant', 'laser', '248', '05-08-01', '5');
+INSERT INTO `surgeryprocedure` VALUES ('325', 'Trachea', 'PDT', '290', '07-05-01', '7');
+INSERT INTO `surgeryprocedure` VALUES ('326', 'Trachea', 'cryo', '290', '07-06-01', '7');
+INSERT INTO `surgeryprocedure` VALUES ('327', 'Trachea', 'laser', '290', '07-07-01', '7');
+INSERT INTO `surgeryprocedure` VALUES ('328', 'Pleura', 'Pleural effusion', '297', '08-07-01', '8');
+INSERT INTO `surgeryprocedure` VALUES ('329', 'Pleura', 'Chylothorax', '297', '08-08-01', '8');
+INSERT INTO `surgeryprocedure` VALUES ('330', 'Pleura', 'Hemothorax', '297', '08-09-01', '8');
+INSERT INTO `surgeryprocedure` VALUES ('331', 'Lung, malignant', 'Tracheostomy', '0', '01-11-01', '1');
+INSERT INTO `surgeryprocedure` VALUES ('332', 'Lung, malignant', 'Jejunostomy', '0', '01-12-01', '1');
+INSERT INTO `surgeryprocedure` VALUES ('333', 'Lung, malignant', 'Photodynamic therapy', '0', '01-13-01', '1');
+INSERT INTO `surgeryprocedure` VALUES ('334', 'Lung, malignant', 'Cryo therapy', '0', '01-14-01', '1');
+INSERT INTO `surgeryprocedure` VALUES ('335', 'Lung, benign', 'Tracheostomy', '0', '02-08-01', '2');
+INSERT INTO `surgeryprocedure` VALUES ('336', 'Lung, benign', 'Jejunostomy', '0', '02-09-01', '2');
+INSERT INTO `surgeryprocedure` VALUES ('337', 'Lung, benign', 'Photodynamic therapy', '0', '02-10-01', '2');
+INSERT INTO `surgeryprocedure` VALUES ('338', 'Lung, benign', 'Cryo therapy', '0', '02-11-01', '2');
+INSERT INTO `surgeryprocedure` VALUES ('339', 'Mediastinum, malignant', 'Tracheostomy', '0', '03-08-01', '3');
+INSERT INTO `surgeryprocedure` VALUES ('340', 'Mediastinum, malignant', 'Jejunostomy', '0', '03-09-01', '3');
+INSERT INTO `surgeryprocedure` VALUES ('341', 'Mediastinum, malignant', 'Photodynamic therapy', '0', '03-10-01', '3');
+INSERT INTO `surgeryprocedure` VALUES ('342', 'Mediastinum, malignant', 'Cryo therapy', '0', '03-11-01', '3');
+INSERT INTO `surgeryprocedure` VALUES ('343', 'Mediastinum, benign', 'Tracheostomy', '0', '04-06-01', '4');
+INSERT INTO `surgeryprocedure` VALUES ('344', 'Mediastinum, benign', 'Jejunostomy', '0', '04-07-01', '4');
+INSERT INTO `surgeryprocedure` VALUES ('345', 'Mediastinum, benign', 'Photodynamic therapy', '0', '04-08-01', '4');
+INSERT INTO `surgeryprocedure` VALUES ('346', 'Mediastinum, benign', 'Cryo therapy', '0', '04-09-01', '4');
+INSERT INTO `surgeryprocedure` VALUES ('347', 'Esophagus/Cardia/Hypopharyngeal, malignant', 'Tracheostomy', '0', '05-09-01', '5');
+INSERT INTO `surgeryprocedure` VALUES ('348', 'Esophagus/Cardia/Hypopharyngeal, malignant', 'Jejunostomy', '0', '05-10-01', '5');
+INSERT INTO `surgeryprocedure` VALUES ('349', 'Esophagus/Cardia/Hypopharyngeal, malignant', 'Photodynamic therapy', '0', '05-11-01', '5');
+INSERT INTO `surgeryprocedure` VALUES ('350', 'Esophagus/Cardia/Hypopharyngeal, malignant', 'Cryo therapy', '0', '05-12-01', '5');
+INSERT INTO `surgeryprocedure` VALUES ('351', 'Esophagus/Cardia, benign', 'Tracheostomy', '0', '06-09-01', '6');
+INSERT INTO `surgeryprocedure` VALUES ('352', 'Esophagus/Cardia, benign', 'Jejunostomy', '0', '06-10-01', '6');
+INSERT INTO `surgeryprocedure` VALUES ('353', 'Esophagus/Cardia, benign', 'Photodynamic therapy', '0', '06-11-01', '6');
+INSERT INTO `surgeryprocedure` VALUES ('354', 'Esophagus/Cardia, benign', 'Cryo therapy', '0', '06-12-01', '6');
+INSERT INTO `surgeryprocedure` VALUES ('355', 'Trachea', 'Tracheostomy', '0', '07-08-01', '7');
+INSERT INTO `surgeryprocedure` VALUES ('356', 'Trachea', 'Jejunostomy', '0', '07-09-01', '7');
+INSERT INTO `surgeryprocedure` VALUES ('357', 'Trachea', 'Photodynamic therapy', '0', '07-10-01', '7');
+INSERT INTO `surgeryprocedure` VALUES ('358', 'Trachea', 'Cryo therapy', '0', '07-11-01', '7');
+INSERT INTO `surgeryprocedure` VALUES ('359', 'Pleura', 'Tracheostomy', '0', '08-10-01', '8');
+INSERT INTO `surgeryprocedure` VALUES ('360', 'Pleura', 'Jejunostomy', '0', '08-11-01', '8');
+INSERT INTO `surgeryprocedure` VALUES ('361', 'Pleura', 'Photodynamic therapy', '0', '08-12-01', '8');
+INSERT INTO `surgeryprocedure` VALUES ('362', 'Pleura', 'Cryo therapy', '0', '08-13-01', '8');
+INSERT INTO `surgeryprocedure` VALUES ('363', 'Diaphragm', 'Tracheostomy', '0', '09-03-01', '9');
+INSERT INTO `surgeryprocedure` VALUES ('364', 'Diaphragm', 'Jejunostomy', '0', '09-04-01', '9');
+INSERT INTO `surgeryprocedure` VALUES ('365', 'Diaphragm', 'Photodynamic therapy', '0', '09-05-01', '9');
+INSERT INTO `surgeryprocedure` VALUES ('366', 'Diaphragm', 'Cryo therapy', '0', '09-06-01', '9');
+INSERT INTO `surgeryprocedure` VALUES ('367', 'End stage lung disease', 'Tracheostomy', '0', '10-02-01', '10');
+INSERT INTO `surgeryprocedure` VALUES ('368', 'End stage lung disease', 'Jejunostomy', '0', '10-03-01', '10');
+INSERT INTO `surgeryprocedure` VALUES ('369', 'End stage lung disease', 'Photodynamic therapy', '0', '10-04-01', '10');
+INSERT INTO `surgeryprocedure` VALUES ('370', 'End stage lung disease', 'Cryo therapy', '0', '10-05-01', '10');
+INSERT INTO `surgeryprocedure` VALUES ('371', 'Chest wall', 'Tracheostomy', '0', '11-05-01', '11');
+INSERT INTO `surgeryprocedure` VALUES ('372', 'Chest wall', 'Jejunostomy', '0', '11-06-01', '11');
+INSERT INTO `surgeryprocedure` VALUES ('373', 'Chest wall', 'Photodynamic therapy', '0', '11-07-01', '11');
+INSERT INTO `surgeryprocedure` VALUES ('374', 'Chest wall', 'Cryo therapy', '0', '11-08-01', '11');
+INSERT INTO `surgeryprocedure` VALUES ('375', 'Miscellaneous', 'Tracheostomy', '0', '12-02-01', '12');
+INSERT INTO `surgeryprocedure` VALUES ('376', 'Miscellaneous', 'Jejunostomy', '0', '12-03-01', '12');
+INSERT INTO `surgeryprocedure` VALUES ('377', 'Miscellaneous', 'Photodynamic therapy', '0', '12-04-01', '12');
+INSERT INTO `surgeryprocedure` VALUES ('378', 'Miscellaneous', 'Cryo therapy', '0', '12-05-01', '12');
+INSERT INTO `surgeryprocedure` VALUES ('379', 'Chemoport', 'Tracheostomy', '0', '13-02-01', '13');
+INSERT INTO `surgeryprocedure` VALUES ('380', 'Chemoport', 'Jejunostomy', '0', '13-03-01', '13');
+INSERT INTO `surgeryprocedure` VALUES ('381', 'Chemoport', 'Photodynamic therapy', '0', '13-04-01', '13');
+INSERT INTO `surgeryprocedure` VALUES ('382', 'Chemoport', 'Cryo therapy', '0', '13-05-01', '13');
+INSERT INTO `surgeryprocedure` VALUES ('383', 'Lung, malignant', 'port-A', '0', '01-15-01', '1');
+INSERT INTO `surgeryprocedure` VALUES ('384', 'Lung, malignant', 'remove port-A', '0', '01-16-01', '1');
+INSERT INTO `surgeryprocedure` VALUES ('385', 'Lung, malignant', 'biopsy', '0', '01-17-01', '1');
+INSERT INTO `surgeryprocedure` VALUES ('386', 'Lung, malignant', 'bullectomy', '0', '01-18-01', '1');
+INSERT INTO `surgeryprocedure` VALUES ('387', 'Lung, malignant', 'stent removal', '0', '01-19-01', '1');
+INSERT INTO `surgeryprocedure` VALUES ('388', 'Mediastinum, malignant', 'port-A', '0', '03-12-01', '3');
+INSERT INTO `surgeryprocedure` VALUES ('389', 'Esophagus/Cardia/Hypopharyngeal, malignant', 'port-A', '0', '05-13-01', '5');
+INSERT INTO `surgeryprocedure` VALUES ('390', 'Mediastinum, malignant', 'remove port-A', '0', '03-13-01', '3');
+INSERT INTO `surgeryprocedure` VALUES ('391', 'Esophagus/Cardia/Hypopharyngeal, malignant', 'remove port-A', '0', '05-14-01', '5');
+INSERT INTO `surgeryprocedure` VALUES ('392', 'Mediastinum, malignant', 'biopsy', '0', '03-14-01', '3');
+INSERT INTO `surgeryprocedure` VALUES ('393', 'Esophagus/Cardia/Hypopharyngeal, malignant', 'biopsy', '0', '05-15-01', '5');
+
+-- ----------------------------
+-- Table structure for `user`
+-- ----------------------------
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `userID` int(11) NOT NULL AUTO_INCREMENT,
+  `userName` varchar(50) DEFAULT NULL,
+  `userRealname` varchar(50) DEFAULT NULL,
+  `userPassword` varchar(50) DEFAULT NULL,
+  `userHospital` varchar(20) DEFAULT NULL,
+  `associateID` varchar(20) DEFAULT NULL,
+  `chestheartID` varchar(20) DEFAULT NULL,
+  `vsEmail` varchar(100) DEFAULT NULL,
+  `vsPermission` char(1) DEFAULT '1',
+  `vsEmailNotify1` char(1) DEFAULT 'N',
+  `vsEmailNotify2` char(1) DEFAULT 'Y',
+  `vsEmailNotify3` char(1) DEFAULT 'N',
+  `vsEmailNotifyOthers` char(1) DEFAULT 'N',
+  `userRole` char(1) DEFAULT NULL,
+  `isAdmin` char(1) DEFAULT 'Y',
+  `isDeleted` char(1) DEFAULT 'N',
+  PRIMARY KEY (`userID`)
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 AVG_ROW_LENGTH=16384;
+
+-- ----------------------------
+-- Records of user
+-- ----------------------------
+INSERT INTO `user` VALUES ('1', 'admin', '系統管理者', 'mmh20190308', null, null, null, null, '1', '0', 'Y', 'N', 'N', '9', 'Y', 'N');
+
+-- ----------------------------
+-- Table structure for `userauthority`
+-- ----------------------------
+DROP TABLE IF EXISTS `userauthority`;
+CREATE TABLE `userauthority` (
+  `aid` int(11) NOT NULL AUTO_INCREMENT,
+  `vsid` int(11) DEFAULT NULL,
+  `uid` int(11) DEFAULT NULL,
+  `a_time` datetime DEFAULT NULL,
+  `e_time` datetime DEFAULT NULL,
+  `a_status` char(1) DEFAULT NULL,
+  PRIMARY KEY (`aid`)
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of userauthority
+-- ----------------------------
+
+
+-- ----------------------------
+-- Table structure for `vs`
+-- ----------------------------
+DROP TABLE IF EXISTS `vs`;
+CREATE TABLE `vs` (
+  `vsID` int(11) NOT NULL AUTO_INCREMENT,
+  `vsName` varchar(50) DEFAULT NULL,
+  `vsHospital` int(11) DEFAULT NULL,
+  `hospitalID` varchar(20) DEFAULT NULL,
+  `associateID` varchar(20) DEFAULT NULL,
+  `chestheartID` varchar(20) DEFAULT NULL,
+  `vsEmail` varchar(100) DEFAULT NULL,
+  `isDeleted` char(1) DEFAULT 'N',
+  PRIMARY KEY (`vsID`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of vs
+-- ----------------------------
+DROP TRIGGER IF EXISTS `createUUID`;
+DELIMITER ;;
+CREATE TRIGGER `createUUID` BEFORE INSERT ON `patientinformation` FOR EACH ROW BEGIN
+ 
+    SET new.patientHospitalUUID=md5(uuid());
+
+END
+;;
+DELIMITER ;

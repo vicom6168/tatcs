@@ -1,0 +1,64 @@
+cp -rf /home/project/websites/cstw_ntuh/application/views/* /home/project/websites/cstw_cmuh/application/views/
+cp -rf /home/project/websites/cstw_ntuh/application/libraries/* /home/project/websites/cstw_cmuh/application/libraries/
+cp -rf /home/project/websites/cstw_ntuh/application/models/* /home/project/websites/cstw_cmuh/application/models/
+cp -rf /home/project/websites/cstw_ntuh/application/controllers/* /home/project/websites/cstw_cmuh/application/controllers/
+cp -rf /home/project/websites/cstw_ntuh/images/* /home/project/websites/cstw_cmuh/images/
+
+chown -R project:project  /home/project/websites/cstw_cmuh/application/views/
+chown -R project:project  /home/project/websites/cstw_cmuh/application/libraries/
+chown -R project:project  /home/project/websites/cstw_cmuh/application/models/
+chown -R project:project  /home/project/websites/cstw_cmuh/application/controllers/
+chown -R project:project  /home/project/websites/cstw_cmuh/images/
+echo "\n cstw_cmuh  Completed";
+
+cp -rf /home/project/websites/cstw_ntuh/application/views/* /home/project/websites/cstw_kmuh/application/views/
+cp -rf /home/project/websites/cstw_ntuh/application/libraries/* /home/project/websites/cstw_kmuh/application/libraries/
+cp -rf /home/project/websites/cstw_ntuh/application/models/* /home/project/websites/cstw_kmuh/application/models/
+cp -rf /home/project/websites/cstw_ntuh/application/controllers/* /home/project/websites/cstw_kmuh/application/controllers/
+cp -rf /home/project/websites/cstw_ntuh/images/* /home/project/websites/cstw_kmuh/images/
+
+chown -R project:project  /home/project/websites/cstw_kmuh/application/views/
+chown -R project:project  /home/project/websites/cstw_kmuh/application/libraries/
+chown -R project:project  /home/project/websites/cstw_kmuh/application/models/
+chown -R project:project  /home/project/websites/cstw_kmuh/application/controllers/
+chown -R project:project  /home/project/websites/cstw_kmuh/images/
+echo "\n cstw_kmuh  Completed";
+
+cp -rf /home/project/websites/cstw_ntuh/application/views/* /home/project/websites/cstw_ntuhhch/application/views/
+cp -rf /home/project/websites/cstw_ntuh/application/libraries/* /home/project/websites/cstw_ntuhhch/application/libraries/
+cp -rf /home/project/websites/cstw_ntuh/application/models/* /home/project/websites/cstw_ntuhhch/application/models/
+cp -rf /home/project/websites/cstw_ntuh/application/controllers/* /home/project/websites/cstw_ntuhhch/application/controllers/
+cp -rf /home/project/websites/cstw_ntuh/images/* /home/project/websites/cstw_ntuhhch/images/
+
+chown -R project:project  /home/project/websites/cstw_ntuhhch/application/views/
+chown -R project:project  /home/project/websites/cstw_ntuhhch/application/libraries/
+chown -R project:project  /home/project/websites/cstw_ntuhhch/application/models/
+chown -R project:project  /home/project/websites/cstw_ntuhhch/application/controllers/
+chown -R project:project  /home/project/websites/cstw_ntuhhch/images/
+echo "\n cstw_ntuhhch  Completed";
+
+cp -rf /home/project/websites/cstw_ntuh/application/views/* /home/project/websites/cstw_vghtpe/application/views/
+cp -rf /home/project/websites/cstw_ntuh/application/libraries/* /home/project/websites/cstw_vghtpe/application/libraries/
+cp -rf /home/project/websites/cstw_ntuh/application/models/* /home/project/websites/cstw_vghtpe/application/models/
+cp -rf /home/project/websites/cstw_ntuh/application/controllers/* /home/project/websites/cstw_vghtpe/application/controllers/
+cp -rf /home/project/websites/cstw_ntuh/images/* /home/project/websites/cstw_vghtpe/images/
+
+chown -R project:project  /home/project/websites/cstw_vghtpe/application/views/
+chown -R project:project  /home/project/websites/cstw_vghtpe/application/libraries/
+chown -R project:project  /home/project/websites/cstw_vghtpe/application/models/
+chown -R project:project  /home/project/websites/cstw_vghtpe/application/controllers/
+chown -R project:project  /home/project/websites/cstw_vghtpe/images/
+echo "\n cstw_vghtpe  Completed";
+
+cp -rf /home/project/websites/cstw_ntuh/application/views/* /home/project/websites/cstw_test/application/views/
+cp -rf /home/project/websites/cstw_ntuh/application/libraries/* /home/project/websites/cstw_test/application/libraries/
+cp -rf /home/project/websites/cstw_ntuh/application/models/* /home/project/websites/cstw_test/application/models/
+cp -rf /home/project/websites/cstw_ntuh/application/controllers/* /home/project/websites/cstw_test/application/controllers/
+cp -rf /home/project/websites/cstw_ntuh/images/* /home/project/websites/cstw_test/images/
+
+chown -R project:project  /home/project/websites/cstw_test/application/views/
+chown -R project:project  /home/project/websites/cstw_test/application/libraries/
+chown -R project:project  /home/project/websites/cstw_test/application/models/
+chown -R project:project  /home/project/websites/cstw_test/application/controllers/
+chown -R project:project  /home/project/websites/cstw_test/images/
+echo "\n cstw_test  Completed";
