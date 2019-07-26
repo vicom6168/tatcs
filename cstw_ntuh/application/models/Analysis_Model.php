@@ -1674,34 +1674,61 @@ $sql.= "  and t1.myOP=t.patientOpDate ";
               
 $sql= "  select *,GROUP_CONCAT(totalSum ORDER BY ProcedureType1 ASC) as sumList ,sum(totalSum) as myTotal from ( ";
 $sql.= " (select t1.code,t1.`category`,t1.order, count(t2.patientID) as totalSum,'1' as ProcedureType1 from surgeryprocedure t1  LEFT  JOIN  ";
-$sql.= " ( select * from patientinformation  where isDeleted ='N'  and  patientOpDate>='$d' and patientOpDate < DATE_ADD('$dEnd', INTERVAL 1 MONTH) and   `ProcedureType1`='1' ) t2 on ";
+$sql.= " ( select * from patientinformation  where isDeleted ='N'  and  patientOpDate>='$d' and patientOpDate < DATE_ADD('$dEnd', INTERVAL 1 MONTH) and   `ProcedureType1`='1' ";
+if($t!="")
+$sql.= " and (patientSurgeon_id3='$t' or patientSurgeon_id4='$t'  or patientSurgeon_id5='$t') ";
+$sql.= " ) t2 on ";
 $sql.= " (t1.`code`=t2.Procedure_id1 ) ";
 $sql.= " group by t1.cancertype order by t1.code ) ";
 $sql.= " UNION ";
 $sql.= " (select t1.code,t1.`category`,t1.order, count(t2.patientID) as totalSum,'2' as ProcedureType1 from surgeryprocedure t1  LEFT  JOIN  ";
-$sql.= " ( select * from patientinformation  where  isDeleted ='N'  and patientOpDate>='$d' and patientOpDate < DATE_ADD('$dEnd', INTERVAL 1 MONTH) and   `ProcedureType1`='2' ) t2 on ";
+$sql.= " ( select * from patientinformation  where  isDeleted ='N'  and patientOpDate>='$d' and patientOpDate < DATE_ADD('$dEnd', INTERVAL 1 MONTH) and   `ProcedureType1`='2' ";
+if($t!="")
+$sql.= " and (patientSurgeon_id3='$t' or patientSurgeon_id4='$t'  or patientSurgeon_id5='$t') ";
+$sql.= " ) t2 on ";
 $sql.= " (t1.`code`=t2.Procedure_id1 ) ";
 $sql.= " group by t1.cancertype order by t1.code ) ";
 $sql.= " UNION ";
 $sql.= " (select t1.code,t1.`category`,t1.order, count(t2.patientID) as totalSum,'3' as ProcedureType1 from surgeryprocedure t1  LEFT  JOIN  ";
-$sql.= " ( select * from patientinformation  where  isDeleted ='N'  and patientOpDate>='$d' and patientOpDate < DATE_ADD('$dEnd', INTERVAL 1 MONTH) and   `ProcedureType1`='3' ) t2 on  ";
+$sql.= " ( select * from patientinformation  where  isDeleted ='N'  and patientOpDate>='$d' and patientOpDate < DATE_ADD('$dEnd', INTERVAL 1 MONTH) and   `ProcedureType1`='3' ";
+if($t!="")
+$sql.= " and (patientSurgeon_id3='$t' or patientSurgeon_id4='$t'  or patientSurgeon_id5='$t') ";
+$sql.= " ) t2 on  ";
 $sql.= " (t1.`code`=t2.Procedure_id1 )  ";
 $sql.= " group by t1.cancertype order by t1.code ) ";
 $sql.= " UNION ";
 $sql.= " (select t1.code,t1.`category`,t1.order, count(t2.patientID) as totalSum,'4' as ProcedureType1 from surgeryprocedure t1  LEFT  JOIN  ";
-$sql.= " ( select * from patientinformation  where  isDeleted ='N'  and patientOpDate>='$d' and patientOpDate < DATE_ADD('$dEnd', INTERVAL 1 MONTH) and   `ProcedureType1`='4' ) t2 on  ";
+$sql.= " ( select * from patientinformation  where  isDeleted ='N'  and patientOpDate>='$d' and patientOpDate < DATE_ADD('$dEnd', INTERVAL 1 MONTH) and   `ProcedureType1`='4' ";
+if($t!="")
+$sql.= " and (patientSurgeon_id3='$t' or patientSurgeon_id4='$t'  or patientSurgeon_id5='$t') ";
+$sql.= " ) t2 on  ";
 $sql.= " (t1.`code`=t2.Procedure_id1 )  ";
 $sql.= " group by t1.cancertype order by t1.code ) ";
 $sql.= " UNION ";
 $sql.= " (select t1.code,t1.`category`,t1.order, count(t2.patientID) as totalSum,'5' as ProcedureType1 from surgeryprocedure t1  LEFT  JOIN  ";
-$sql.= " ( select * from patientinformation  where  isDeleted ='N'  and patientOpDate>='$d' and patientOpDate < DATE_ADD('$dEnd', INTERVAL 1 MONTH) and   `ProcedureType1`='5' ) t2 on  ";
+$sql.= " ( select * from patientinformation  where  isDeleted ='N'  and patientOpDate>='$d' and patientOpDate < DATE_ADD('$dEnd', INTERVAL 1 MONTH) and   `ProcedureType1`='5'";
+if($t!="")
+$sql.= " and (patientSurgeon_id3='$t' or patientSurgeon_id4='$t'  or patientSurgeon_id5='$t') ";
+$sql.= "  ) t2 on  ";
 $sql.= " (t1.`code`=t2.Procedure_id1 )  ";
 $sql.= " group by t1.cancertype order by t1.code ) ";
 $sql.= " UNION ";
 $sql.= " (select t1.code,t1.`category`,t1.order, count(t2.patientID) as totalSum,'6' as ProcedureType1 from surgeryprocedure t1  LEFT  JOIN   ";
-$sql.= " ( select * from patientinformation  where  isDeleted ='N'  and patientOpDate>='$d' and patientOpDate < DATE_ADD('$dEnd', INTERVAL 1 MONTH) and   `ProcedureType1`='6' ) t2 on  ";
+$sql.= " ( select * from patientinformation  where  isDeleted ='N'  and patientOpDate>='$d' and patientOpDate < DATE_ADD('$dEnd', INTERVAL 1 MONTH) and   `ProcedureType1`='6'";
+if($t!="")
+$sql.= " and (patientSurgeon_id3='$t' or patientSurgeon_id4='$t'  or patientSurgeon_id5='$t') ";
+$sql.= "  ) t2 on  ";
  $sql.= " (t1.`code`=t2.Procedure_id1 )  ";
-$sql.= " group by t1.cancertype order by t1.code ) ) a ";
+$sql.= " group by t1.cancertype order by t1.code ) ";
+$sql.= " UNION ";
+$sql.= " (select t1.code,t1.`category`,t1.order, count(t2.patientID) as totalSum,'7' as ProcedureType1 from surgeryprocedure t1  LEFT  JOIN   ";
+$sql.= " ( select * from patientinformation  where  isDeleted ='N'  and patientOpDate>='$d' and patientOpDate < DATE_ADD('$dEnd', INTERVAL 1 MONTH) and   (`ProcedureType1`='7' or `ProcedureType1`='' )";
+if($t!="")
+$sql.= " and (patientSurgeon_id3='$t' or patientSurgeon_id4='$t'  or patientSurgeon_id5='$t') ";
+$sql.= "  ) t2 on  ";
+ $sql.= " (t1.`code`=t2.Procedure_id1 )  ";
+$sql.= " group by t1.cancertype order by t1.code ) ";
+$sql.= ") a ";
  $sql.= "  group by category ORDER BY code ";
  
  return $this->db->query($sql); 
@@ -1763,7 +1790,7 @@ function query_vsoperationList($qYear,$qMonth,$qYearEnd,$qMonthEnd,$s, $t){
     return $this->db->query($sql);
     }
     
-    function query_complication($qYear,$qMonth,$qYearEnd,$qMonthEnd,$t){
+    function query_complication($qYear,$qMonth,$qYearEnd,$qMonthEnd,$t,$s=''){
          $d=$qYear."-".$qMonth."-01";
        $dEnd=$qYearEnd."-".$qMonthEnd."-01";
        $conStr="";
@@ -1815,6 +1842,9 @@ function query_vsoperationList($qYear,$qMonth,$qYearEnd,$qMonthEnd,$s, $t){
                   $conStr=" outcomeOthersCheck='Y'";
                break;     
        }
+if($s!=''){
+    $conStr.="  and (patientSurgeon_id3='$s' or patientSurgeon_id4='$s'  or patientSurgeon_id5='$s') ";
+}
 $sql= "  select *,CAST(GROUP_CONCAT(totalSum ORDER BY code ASC) as CHAR(30))  as sumList ,sum(totalSum) as myTotal from ( ";
 $sql.= " select t1.code,t1.`category`,t1.order, count(t2.patientID) as totalSum from surgeryprocedure t1  LEFT  JOIN  ";
 $sql.= " (select * from patientinformation  where  isDeleted ='N'  ";

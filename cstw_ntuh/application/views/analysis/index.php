@@ -65,6 +65,7 @@ $currenYear=Date('Y');
                                 <th nowrap>VATS<br/>(Single port)</th>
                                 <th nowrap>VATS<br/>(Multiple port)</th>
                                 <th nowrap>Robot <br/>Assisted</th>
+                                <th nowrap>Others</th>
                                <th nowrap>Total</th>
                             </tr> 
                         </thead> 
@@ -87,6 +88,7 @@ $currenYear=Date('Y');
                               <td><?php echo $pieces[4];?></th>
                               <td><?php echo $pieces[5];?></th>
                               <td><?php echo $pieces[3];?></th>
+                              <td><?php echo $pieces[6];?></th>
                               <td><?php echo $row->myTotal;?></th>
                            </tr> 
                         <?php  $i++;

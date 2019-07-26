@@ -23,7 +23,7 @@ $currenYear=Date('Y');
                       <div class="linewithoutindention">
                             <label  class="withinLargedention">手術醫師：</label>
                             <div class="linewithoutindention">
-                               
+                               <?php echo $this->session->userdata('userRealname');?>
                         </div>
                         </div>
                            <div class="linewithoutindention">
@@ -88,8 +88,8 @@ $currenYear=Date('Y');
                             <tr> 
                                 <td style="padding : 2px 8px;line-height : 15px;"><?php echo $j;?></td>
                                 <td style="padding : 2px 8px;line-height : 15px;"><?php echo $row->patientChartNumber;?></td>
-                                <td style="padding : 2px 8px;line-height : 15px;"><?php echo $row->patientName;?></td>
-                              <td style="padding : 2px 8px;line-height : 15px;"><?php echo str_replace('0000-00-00', '', $row->patientBirthday);?></td>
+                                <td style="padding : 2px 8px;line-height : 15px;"><?php echo ($hospitalsystem=="Y"?$row->patientName: mb_substr_replace($row->patientName,'O',1,1));?></td>
+                                <td style="padding : 2px 8px;line-height : 15px;"><?php echo str_replace('0000-00-00', '', $row->patientBirthday);?></td>
                                 
                                 <td style="padding : 2px 8px;line-height : 15px;"><?php echo $row->patientGender;?></td>
                                  <td style="padding : 2px 8px;line-height : 15px;"><?php echo str_replace('0000-00-00', '', $row->patientOpDate);?></td>
@@ -115,10 +115,9 @@ $currenYear=Date('Y');
                   
                 </div>
                 </form>
-                <?php if(1==2 && $qYear!="" && $qMonth!="") { ?>
+                <?php if($qYear!="" && $qMonth!="") { ?>
                   <div class="line">
-                 <button type="submit" class="greenmediumspecial" onclick=" window.open('<?php echo base_url(); ?>analysis/PDFnonopenheart/<?php echo $qYear;?>/<?php echo $qMonth;?>/<?php echo $qYearEnd;?>/<?php echo $qMonthEnd;?>','_blank')"><span>PDF</span></button>
-                 <button type="submit" class="greenmediumspecial" onclick=" window.open('<?php echo base_url(); ?>analysis/EXCELnonopenheart/<?php echo $qYear;?>/<?php echo $qMonth;?>/<?php echo $qYearEnd;?>/<?php echo $qMonthEnd;?>','_blank')"><span>EXCEL</span></button>
+                 <button type="submit" class="greenmediumspecial" onclick="window.open('<?php echo base_url(); ?>analysis/EXCELresident/<?php echo $qYear;?>/<?php echo $qMonth;?>/<?php echo $qYearEnd;?>/<?php echo $qMonthEnd;?>','_blank')"><span>EXCEL</span></button>
                   </div>
                   <?php } ?>
              

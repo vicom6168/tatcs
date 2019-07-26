@@ -131,9 +131,9 @@ public function doctoroperation(){
      
     $this->load->model('Parameter_Model');  
         
-        $vsList = $this->Parameter_Model->query_vsList();
-        $data['vsList']=$vsList;  
-        $data['page']="analysis";  
+     $vsList = $this->Parameter_Model->query_vsList();
+     $data['vsList']=$vsList;  
+     $data['page']="analysis";  
      $data['subpage']="doctor";  
      $data['path']="<li>統計報表</li><li  class='break'>&#187;</li><li>1. 學會手術統計申報表</li>";
      $data['patientList']=$ans1;
@@ -143,6 +143,13 @@ public function doctoroperation(){
      $data['qMonthEnd']=$qMonthEnd;
      $data['vsID']=$patientSurgeon;
      $data['vsType']=$vsType;
+     
+     //看是否顯示病人全名--開始
+       $this->load->model('Parameter_Model');
+        $hospitalsystem= $this->Parameter_Model->query_system()->row()->patientname;   
+        $data['hospitalsystem']=$hospitalsystem;
+        
+       //看是否顯示病人全名--結束
      
        $this->load->view('analysis/doctoroperation',$data); 
 }
@@ -1796,8 +1803,8 @@ public function resident(){
      $qMonth=$this->input->post('qMonth')==null?"":$this->input->post('qMonth');
      $qYearEnd=$this->input->post('qYearEnd')==null?"":$this->input->post('qYearEnd');
      $qMonthEnd=$this->input->post('qMonthEnd')==null?"":$this->input->post('qMonthEnd');
-     $patientSurgeon=$this->input->post('patientSurgeon')==null?"":$this->input->post('patientSurgeon');
-     $vsType=$this->input->post('vsType')==null?"":$this->input->post('vsType');
+     $patientSurgeon=$this->session->userdata('userID');
+     $vsType="R";
      
      if( $qYear!='' &&  $qMonth!=''){
          
@@ -1810,9 +1817,9 @@ public function resident(){
      
     $this->load->model('Parameter_Model');  
         
-        $vsList = $this->Parameter_Model->query_vsList();
-        $data['vsList']=$vsList;  
-        $data['page']="analysis";  
+     $vsList = $this->Parameter_Model->query_vsList();
+     $data['vsList']=$vsList;  
+     $data['page']="analysis";  
      $data['subpage']="doctor";  
      $data['path']="<li>統計報表</li><li  class='break'>&#187;</li><li>1. 學會手術統計申報表</li>";
      $data['patientList']=$ans1;
@@ -1823,7 +1830,64 @@ public function resident(){
      $data['vsID']=$patientSurgeon;
      $data['vsType']=$vsType;
      
+     //看是否顯示病人全名--開始
+       $this->load->model('Parameter_Model');
+        $hospitalsystem= $this->Parameter_Model->query_system()->row()->patientname;   
+        $data['hospitalsystem']=$hospitalsystem;
+        
+       //看是否顯示病人全名--結束
+     
        $this->load->view('analysis/resident',$data); 
+}
+
+
+public function EXCELresident($qYear,$qMonth,$qYearEnd,$qMonthEnd){
+    $ans1="";
+    $vsID="";
+    $vsType="";
+    // $qYear=$this->input->post('qYear')==null?"":$this->input->post('qYear');
+    // $qMonth=$this->input->post('qMonth')==null?"":$this->input->post('qMonth');
+    // $qYearEnd=$this->input->post('qYearEnd')==null?"":$this->input->post('qYearEnd');
+   //  $qMonthEnd=$this->input->post('qMonthEnd')==null?"":$this->input->post('qMonthEnd');
+     $patientSurgeon=$this->session->userdata('userID');
+     $vsType="R";
+     
+     if( $qYear!='' &&  $qMonth!=''){
+         
+        $ans1=$this->Analysis_Model->query_vsoperationList($qYear,$qMonth,$qYearEnd,$qMonthEnd,$patientSurgeon,$vsType);
+         $ans2=$this->Analysis_Model->query_associateReport($qYear,$qMonth,$qYearEnd,$qMonthEnd,$this->session->userdata('userID'));      
+        for($i=0;$i<15;$i++){
+        $myans[$i]=$this->Analysis_Model->query_complication($qYear,$qMonth,$qYearEnd,$qMonthEnd,$i,$this->session->userdata('userID'));
+         }
+       $access_id=accessLog('R','ANALYSIS',$this->session->userdata('userID'),$this->session->userdata('userRealname').'查詢報表【 住院醫師學會統計表】(期間:'.$qYear.'/'.$qMonth.'~'.$qYearEnd.'/'.$qMonthEnd.')','S');
+        
+     }
+     
+    $this->load->model('Parameter_Model');  
+        
+     $vsList = $this->Parameter_Model->query_vsList();
+     $data['vsList']=$vsList;  
+     $data['page']="analysis";  
+     $data['subpage']="doctor";  
+     $data['path']="<li>統計報表</li><li  class='break'>&#187;</li><li>1. 學會手術統計申報表</li>";
+     $data['patientList']=$ans1;
+     $data['associateList']=$ans2;
+     $data['answer']=$myans;
+     $data['qYear']=$qYear;
+     $data['qMonth']=$qMonth;
+     $data['qYearEnd']=$qYearEnd;
+     $data['qMonthEnd']=$qMonthEnd;
+     $data['vsID']=$patientSurgeon;
+     $data['vsType']=$vsType;
+     
+     //看是否顯示病人全名--開始
+       $this->load->model('Parameter_Model');
+        $hospitalsystem= $this->Parameter_Model->query_system()->row()->patientname;   
+        $data['hospitalsystem']=$hospitalsystem;
+        
+       //看是否顯示病人全名--結束
+     
+       $this->load->view('analysis/EXCELresident',$data); 
 }
 }
 
