@@ -36,8 +36,16 @@ class Patient extends CI_Controller {
            $qryStr="";
 	    $data['result_msg']='';
 		//$this->load->view('homenew',$data);
-		 $this->load->model('PatientInformation_Model');
+      $this->load->model('PatientInformation_Model');
       $this->load->model('Parameter_Model');
+      
+      //看是否顯示病人全名--開始
+       $this->load->model('Parameter_Model');
+        $hospitalsystem= $this->Parameter_Model->query_system()->row()->patientname;   
+        $data['hospitalsystem']=$hospitalsystem;
+        
+       //看是否顯示病人全名--結束
+     
       //  $column = $this->PatientInformation_Model->query_patientlist();
             $config['per_page'] = 20; 
         $data['patientList']=$this->PatientInformation_Model->query_patientlist($qryField,$qryOrder,urldecode($qryStr),$page,$config['per_page']);
@@ -84,6 +92,13 @@ class Patient extends CI_Controller {
         //$this->load->view('homenew',$data);
          $this->load->model('PatientInformation_Model');
       $this->load->model('Parameter_Model');
+      //看是否顯示病人全名--開始
+       $this->load->model('Parameter_Model');
+        $hospitalsystem= $this->Parameter_Model->query_system()->row()->patientname;   
+        $data['hospitalsystem']=$hospitalsystem;
+        
+       //看是否顯示病人全名--結束
+       
       //  $column = $this->PatientInformation_Model->query_patientlist();
         $config['per_page'] = 20; 
         $data['patientList']=$this->PatientInformation_Model->query_uncompletelist($qryField,$qryOrder,$qryCondition,urldecode($qryStr),$page,$config['per_page']);

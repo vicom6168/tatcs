@@ -84,6 +84,15 @@ class Parameter_Model extends CI_Model {
         $sql= "SELECT * FROM surgeryprocedure  group by cancertype order by CAST(cancertype AS DECIMAL(10))";
      return $this->db->query($sql);
     }
+    
+     function query_system(){
+        $sql= "SELECT * FROM hospitalsystem  limit 0,1";
+     return $this->db->query($sql);
+    }
+     function update_system($pname){
+        $sql= "update hospitalsystem  set patientname=?";
+        return $this->db->query($sql,array($pname));
+    }
 }
 
 /* End of file News_Model.php */

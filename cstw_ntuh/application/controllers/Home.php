@@ -35,31 +35,44 @@ class Home extends CI_Controller {
         $this->load->view('home/dashboard',$data);
     }
     
-    public function booking(){
+    public function System(){
         $this->load->library('session');
         if($this->session->userdata('userID')=="" )
         redirect(base_url().'home', 'refresh');
         
-        date_default_timezone_set("Asia/Taipei");
+      
         $this->load->model('Parameter_Model');
-        $this->load->model('Booking_Model'); 
         
-        $data['page']="booking";    
-        $data['path']="<li>我要訂床</li>";
-        if(date('H')>=16)
-        $booking_Date= date("Y-m-d", time()+86400);
-        else 
-        $booking_Date= date("Y-m-d");
-        $vs_column = $this->Parameter_Model->query_vs($this->session->userdata('bookingID'));   
-        $data['viewVS']=$vs_column;
-        $column = $this->Booking_Model->query_booking($booking_Date,$this->session->userdata('bookingID'));
-        $data['viewBookingSpecialty']=$column;
-        $data['booking_Date']=$booking_Date;  
-        $this->load->view('home/booking',$data);
+        $data['page']="parameter";  
+        $data['subpage']="system";    
+        $data['path']="<li>System Setting</li>";
+        
+         $hospitalsystem= $this->Parameter_Model->query_system()->row()->patientname;   
+        $data['hospitalsystem']=$hospitalsystem;
+        $data['Msg']='';
+        $this->load->view('parameter/System',$data);
     }
     
    
-    
+     public function Savesystem(){
+        $this->load->library('session');
+        if($this->session->userdata('userID')=="" )
+        redirect(base_url().'home', 'refresh');
+        
+      
+        $this->load->model('Parameter_Model');
+        
+        $data['page']="parameter";  
+        $data['subpage']="system";    
+        $data['path']="<li>System Setting</li>";
+        $hospitalsystem=$this->input->post('hospitalsystem')==null?"N":"Y";
+        $this->Parameter_Model->update_system($hospitalsystem);   
+        
+        $hospitalsystem= $this->Parameter_Model->query_system()->row()->patientname;   
+        $data['hospitalsystem']=$hospitalsystem;
+        $data['Msg']='Modified success';
+        $this->load->view('parameter/System',$data);
+    }
    
     function checkUser(){
         $this->load->library('form_validation');  
@@ -214,7 +227,7 @@ class Home extends CI_Controller {
         $this->load->view('home/password',$data);
    }
    function passwordUpdate(){
-            $data['page']="parameter";  
+        $data['page']="parameter";  
         $data['subpage']="password";    
         $data['path']="<li>修改密碼</li>";
         

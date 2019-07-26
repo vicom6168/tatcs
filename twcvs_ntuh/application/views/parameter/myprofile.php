@@ -98,6 +98,12 @@ $role[9]="Other";
                              <label for="vsEmailNotifyOthers">是&nbsp;&nbsp;</label>  &nbsp; 
                              
                         </div>
+                           <div class="line"  id="VS_isExport">
+                            <label>院內資料surgeon去名化?</label>
+                             <input type="checkbox" name="isExport" id="isExport"  value="0" <?php if($userDetail->isExport=='0') echo "checked";?>>
+                             <label for="isExport">是&nbsp;&nbsp;</label>  &nbsp; 
+                             
+                        </div>
                     <div class="line button">
                            
                             <button type="submit" class="blue medium"><span>送出</span></button>

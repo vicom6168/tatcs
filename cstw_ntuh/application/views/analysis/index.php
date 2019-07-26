@@ -80,7 +80,7 @@ $currenYear=Date('Y');
                                           $labelStr[$i]=$row->category;
                             ?>
                           <tr> 
-                              <td style="width:100px;display: inline-block;word-wrap: break-word;"><a class="various" data-fancybox-type="iframe" href="/Analysis/indexDetail/<?php echo $j;?>/<?php echo $qYear;?>/<?php echo $qMonth;?>/<?php echo $qYearEnd;?>/<?php echo $qMonthEnd;?>"><?php echo $row->category;?></a></th>
+                              <td><a class="various" data-fancybox-type="iframe" href="/Analysis/indexDetail/<?php echo $j;?>/<?php echo $qYear;?>/<?php echo $qMonth;?>/<?php echo $qYearEnd;?>/<?php echo $qMonthEnd;?>"><?php echo $row->category;?></a></th>
                               <td><?php echo $pieces[0];?></th>
                               <td><?php echo $pieces[1];?></th>
                               <td><?php echo $pieces[2];?></th>

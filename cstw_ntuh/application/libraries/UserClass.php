@@ -17,4 +17,5 @@ class userClass {
   public $userRole;
   public $isAdmin;
   public $isDeleted;
+  public $isExport;
 }

@@ -1787,6 +1787,44 @@ public function EXCELCRMeeting($qDate1,$qDate2)
         $data['path']="<li>統計報表</li><li  class='break'>&#187;</li>";
         $this->load->view('analysis/EXCELVascularCRMeeting.php',$data);
     }
+
+public function resident(){
+    $ans1="";
+    $vsID="";
+    $vsType="";
+     $qYear=$this->input->post('qYear')==null?"":$this->input->post('qYear');
+     $qMonth=$this->input->post('qMonth')==null?"":$this->input->post('qMonth');
+     $qYearEnd=$this->input->post('qYearEnd')==null?"":$this->input->post('qYearEnd');
+     $qMonthEnd=$this->input->post('qMonthEnd')==null?"":$this->input->post('qMonthEnd');
+     $patientSurgeon=$this->input->post('patientSurgeon')==null?"":$this->input->post('patientSurgeon');
+     $vsType=$this->input->post('vsType')==null?"":$this->input->post('vsType');
+     
+     if( $qYear!='' &&  $qMonth!=''){
+         
+        $ans1=$this->Analysis_Model->query_vsoperationList($qYear,$qMonth,$qYearEnd,$qMonthEnd,$patientSurgeon,$vsType);
+               
+      
+       $access_id=accessLog('R','ANALYSIS',$this->session->userdata('userID'),$this->session->userdata('userRealname').'查詢報表【 住院醫師學會統計表】(期間:'.$qYear.'/'.$qMonth.'~'.$qYearEnd.'/'.$qMonthEnd.')','S');
+        
+     }
+     
+    $this->load->model('Parameter_Model');  
+        
+        $vsList = $this->Parameter_Model->query_vsList();
+        $data['vsList']=$vsList;  
+        $data['page']="analysis";  
+     $data['subpage']="doctor";  
+     $data['path']="<li>統計報表</li><li  class='break'>&#187;</li><li>1. 學會手術統計申報表</li>";
+     $data['patientList']=$ans1;
+     $data['qYear']=$qYear;
+     $data['qMonth']=$qMonth;
+     $data['qYearEnd']=$qYearEnd;
+     $data['qMonthEnd']=$qMonthEnd;
+     $data['vsID']=$patientSurgeon;
+     $data['vsType']=$vsType;
+     
+       $this->load->view('analysis/resident',$data); 
+}
 }
 
 /* End of file welcome.php */

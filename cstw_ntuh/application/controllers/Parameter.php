@@ -132,7 +132,8 @@ class Parameter extends CI_Controller {
                 $userClass->vsEmailNotify2=$this->input->post('vsEmailNotify2');
                 $userClass->vsEmailNotify3=$this->input->post('vsEmailNotify3');
                 
-                        $userClass->vsEmailNotifyOthers=$this->input->post('vsEmailNotifyOthers')==null?"N":"Y";
+                $userClass->vsEmailNotifyOthers=$this->input->post('vsEmailNotifyOthers')==null?"N":"Y";
+                $userClass->isExport=$this->input->post('isExport')==null?"1":"0";
                 $userClass->userRole=$this->input->post('userRole');
                 $userClass->isAdmin=$this->input->post('isAdmin')==null?"N":"Y";
                 $userClass->isDeleted="N";   
@@ -513,6 +514,7 @@ class Parameter extends CI_Controller {
                 $userClass->vsEmailNotify2=$this->input->post('vsEmailNotify2');
                 $userClass->vsEmailNotify3=$this->input->post('vsEmailNotify3');
                 $userClass->vsEmailNotifyOthers=$this->input->post('vsEmailNotifyOthers')==null?"N":"Y";
+                $userClass->isExport=$this->input->post('isExport')==null?"1":"0";
                 $this->user_Model->update_user($id,$userClass);
        
        $data['Msg']="Your Profile Modified Successful";

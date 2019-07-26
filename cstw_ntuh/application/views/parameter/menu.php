@@ -52,7 +52,9 @@
                               <tr> 
                                 <td><a href="<?php echo base_url(); ?>home/password/" ><span class='<?php echo ($subpage=="password"?"currentPage":"");?>'>Change Password</span></a></td>
                             </tr>
-                               
+                                  <tr> 
+                                <td><a href="<?php echo base_url(); ?>home/system/" ><span class='<?php echo ($subpage=="system"?"currentPage":"");?>'>System Setting</span></a></td>
+                            </tr>
                         </tbody> 
                     </table>
                 </div>

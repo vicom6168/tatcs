@@ -75,7 +75,7 @@ $completeImage=array(
                             <tr> 
                                 <td style="padding : 2px 8px;line-height : 10px;"><?php echo $j;?></td>
                                 <td style="padding : 2px 8px;line-height : 10px;"><?php echo $row->patientChartNumber;?></td>
-                                <td style="padding : 2px 8px;line-height : 10px;"><?php echo $row->patientName;?></td>
+                                <td style="padding : 2px 8px;line-height : 10px;"><?php echo ($hospitalsystem=="Y"?$row->patientName: mb_substr_replace($row->patientName,'O',1,1));?></td>
                                  <td style="padding : 2px 8px;line-height : 10px;"><?php echo str_replace('0000-00-00', '', $row->patientOpDate);?></td>
                             <td style="padding : 2px 8px;line-height : 10px;"><?php 
                             echo $row->patientSurgeon;

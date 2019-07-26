@@ -29,8 +29,8 @@
                         <li>Patient Gender 空白</li>
                         <li>Operation Date 空白 </li>
                         <li>Patient Birth Date 空白</li>
-                        <li>Admission Date 空白</li>
-                        <li>Discharge Date 空白</li>
+                        <li><S>Admission Date 空白</S></li>
+                        <li><S>Discharge Date 空白</S></li>
                         
                         </ul>
                             </td>
@@ -45,7 +45,7 @@
                            <li>2.   第一個主治醫師 沒選</li>
                            <li>3.   第一個住院醫師 沒選(且未選無)</li>
                            <li>4.   第一個診斷 沒選 且 其他診斷沒填寫 </li>
-                           <li>5.   第一個術式 沒選 且 其他術式沒填寫</li>  
+                           <li>5.   第一個術式(Primary Procedure) 沒選 且 其他術式沒填寫</li>  
                        
                         
                       
