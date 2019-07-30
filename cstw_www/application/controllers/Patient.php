@@ -155,17 +155,7 @@ class Patient extends CI_Controller {
             $column = $this->PatientInformation_Model->viewRecord($pid);
         $data['myContent']=$column;  
          
-        //query data permission beginning
-            $data['dataPermission']="N";
-        $dataOwnerID=$column->row()->patientSurgeon_id;
-        $this->load->model('user_Model');
-         if($dataOwnerID=="" || $dataOwnerID==$this->session->userdata('userID') || 
-                  $this->user_Model->query_user($dataOwnerID)->row()->vsPermission=="1" || 
-                  $this->PatientInformation_Model->queryDataOwner($dataOwnerID,$this->session->userdata('userID'))->num_rows() >=1)
-                  {
-            $data['dataPermission']="Y";
-        }
-      //query data permission ending
+       
        
         
         

@@ -114,14 +114,7 @@
                             </div>
           
                       <div class="line button">
-                           
-                            <?php if($dataPermission=="Y" && $outOfDateFlag=="" && 1==2) { ?>
-                                <button type="submit" class="blue medium"><span>送出</span></button>
-                            <?php }  else if($dataPermission=="N"){ ?>
-                                     <div class="messages orange"> 您尚未得到 <?php echo $c->patientSurgeon;?> 醫師授權, 故無法修改或執行列印</div>
-                              <?php } else {
-                                        echo  $outOfDateFlag;
-                     } ?>
+                        
                              </td>
                                 
                                 
@@ -312,13 +305,7 @@
                         </div>
                       <div class="line button">
                            
-                            <?php if($dataPermission=="Y" && $outOfDateFlag=="" && 1==2) { ?>
-                                <button type="submit" class="blue medium"><span>送出</span></button>
-                            <?php }  else if($dataPermission=="N"){ ?>
-                                     <div class="messages orange"> 您尚未得到 <?php echo $c->patientSurgeon;?> 醫師授權, 故無法修改或執行列印</div>
-                              <?php } else {
-                                        echo  $outOfDateFlag;
-                     } ?>
+                         
                              </td>
                                 
                                 
@@ -341,104 +328,11 @@
                     <span class="surgery">其他治療</span>
                    <!-- <span class="surgery"><a href="#" onclick="callHideShow('divNoneSurgery')">Non-open heart</a></span> -->
                 </div>
-                   <div class="line">
-                            <label>Sys Dx. Date </label>
-                           <input type="text" name="CancerSysDxDate" id="CancerSysDxDate" class="small" value="<?php echo $c->CancerSysDxDate;?>"/>
-                      </div>  
-                  <div class="lineheader">
-                            <label> Radiotherapy  </label>
-                               <label for="Radiotherapy"  id="Radiotherapy"></label> &nbsp;
-                      </div>
-                    
-                 
-                      <div class="line">
-                            <label>Initial Date </label>
-                           <input type="text" name="CancerRadiotherapy_initialDate" id="CancerRadiotherapy_initialDate" class="small" value="<?php echo $c->CancerRadiotherapy_initialDate;?>"/>
-                      </div>    
-                      
-                       <div class="line">
-                            <label>End Date </label>
-                           <input type="text" name="CancerRadiotherapy_endDate" id="CancerRadiotherapy_endDate" class="small" value="<?php echo $c->CancerRadiotherapy_endDate;?>"/>
-                      </div>       
-                          
-                    <div class="lineheader">
-                            <label> Chemotherapy  </label>
-                             <label for="Chemotherapy"></label> &nbsp;
-                   </div>    
-                      <div class="line">
-                            <label> Pre C/T: </label>
-                            <input type="text" name="CancerChemotherapy_PreCT" id="CancerChemotherapy_PreCT"  class="small" value="<?php echo $c->CancerChemotherapy_PreCT;?>" />
-                            </div>     
-                      <div class="line">
-                            <label> C/T: </label>
-                            <input type="text" name="CancerChemotherapy_CT" id="CancerChemotherapy_CT"  class="small" value="<?php echo $c->CancerChemotherapy_CT;?>" />
-                            </div>   
-                       <div class="line">
-                            <label>Initial Date of C/T</label>
-                           <input type="text" name="CancerChemotherapy_initialDate" id="CancerChemotherapy_initialDate" class="small" value="<?php echo $c->CancerChemotherapy_initialDate;?>"/>
-                      </div>          
-                       
-                          <div class="lineheader">
-                            <label> Target Therapy  </label>
-                             <label for="operationAorticValve"></label> &nbsp;
-                   </div>   
-                            <div class="line">
-                            <label> Pre Target Tx: </label>
-                            <input type="text" name="CancerTargetTherapy_PreTx" id="CancerTargetTherapy_PreTx"  class="small" value="<?php echo $c->CancerTargetTherapy_PreTx;?>" />
-                            </div>     
-                      <div class="line">
-                            <label> Target Tx: </label>
-                            <input type="text" name="CancerTargetTherapy_Tx" id="CancerTargetTherapy_Tx"  class="small" value="<?php echo $c->CancerTargetTherapy_Tx;?>" />
-                            </div>   
-                       <div class="line">
-                            <label>Initial Date of Target Tx</label>
-                           <input type="text" name="CancerTargetTherapy_initialDate" id="CancerTargetTherapy_initialDate" class="small" value="<?php echo $c->CancerTargetTherapy_initialDate;?>"/>
-                      </div>   
-                      
-                       <div class="lineheader">
-                            <label> Hormone Therapy  </label>
-                             <label for="HormoneTherapy"></label> &nbsp;
-                   </div>    
-                      <div class="line">
-                            <label> Pre H/T: </label>
-                            <input type="text" name="CancerHormoneTherapy_PreTx" id="CancerHormoneTherapy_PreTx"  class="small" value="<?php echo $c->CancerHormoneTherapy_PreTx;?>" />
-                            </div>     
-                      <div class="line">
-                            <label> H/T: </label>
-                            <input type="text" name="CancerHormoneTherapy_Tx" id="CancerHormoneTherapy_Tx"  class="small" value="<?php echo $c->CancerHormoneTherapy_Tx;?>" />
-                            </div>   
-                       <div class="line">
-                            <label>Initial Date of H/T</label>
-                           <input type="text" name="CancerHormoneTherapy_initialDate" id="CancerHormoneTherapy_initialDate" class="small" value="<?php echo $c->CancerHormoneTherapy_initialDate;?>"/>
-                      </div>          
-                      
-                      
-                          <div class="lineheader">
-                            <label> Immunotherapy  </label>
-                             <label for="Immunotherapy"></label> &nbsp;
-                   </div>    
-                      <div class="line">
-                            <label> Pre Imm: </label>
-                            <input type="text" name="CancerImmunotherapy_PreImm" id="CancerImmunotherapy_PreImm"  class="small" value="<?php echo $c->CancerImmunotherapy_PreImm;?>" />
-                            </div>     
-                      <div class="line">
-                            <label> Imm: </label>
-                            <input type="text" name="CancerImmunotherapy_Imm" id="CancerImmunotherapy_Imm"  class="small" value="<?php echo $c->CancerImmunotherapy_Imm;?>" />
-                            </div>   
-                       <div class="line">
-                            <label>Initial Date of Imm</label>
-                           <input type="text" name="CancerImmunotherapy_initialDate" id="CancerImmunotherapy_initialDate" class="small" value="<?php echo $c->CancerImmunotherapy_initialDate;?>"/>
-                      </div>    
+                
                       
                       <div class="line button">
                            
-                            <?php if($dataPermission=="Y" && $outOfDateFlag=="" && 1==2) { ?>
-                                <button type="submit" class="blue medium"><span>送出</span></button>
-                            <?php }  else if($dataPermission=="N"){ ?>
-                                     <div class="messages orange"> 您尚未得到 <?php echo $c->patientSurgeon;?> 醫師授權, 故無法修改或執行列印</div>
-                              <?php } else {
-                                        echo  $outOfDateFlag;
-                     } ?>
+                         
                              </td>
                                 
                                 

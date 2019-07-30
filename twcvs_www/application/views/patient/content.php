@@ -85,7 +85,7 @@ $genderImage=array(
                                          <td bgcolor="<?php echo $myColor;?>">Operation Date:</td>
                                          <td><?php echo  str_replace('0000-00-00', '', $c->patientOpDate);?></td>
                                          <td bgcolor="<?php echo $myColor;?>">Surgeon</td>
-                                         <td><?php echo $c->patientSurgeon;?></td>
+                                         <td>******</td>
                                      </tr>
                                  </table>   
                                     
@@ -451,25 +451,25 @@ elseif($c->patientAgeUnit=="2"){
                         <div class="line">
                             <label>Surgeon 1
                               </label>
-                           <input type="text" name="patientSurgeon" id="patientSurgeon1_1"  class="small" value="<?php echo  $c->patientSurgeon;?>" >
+                           <input type="text" name="patientSurgeon" id="patientSurgeon1_1"  class="small" value="******" >
                                
                         </div>
                           <div class="line">
                             <label>Surgeon 2</label>
                           
-                           <input type="text" name="patientSurgeon2" id="patientSurgeon1_2"  class="small" value="<?php echo  $c->patientSurgeon2;?>" >
+                           <input type="text" name="patientSurgeon2" id="patientSurgeon1_2"  class="small" value="******" >
                                
                         </div>
                           <div class="line">
                             <label>Surgeon 3</label>
                           
-                             <input type="text" name="patientSurgeon3" id="patientSurgeon1_3"  class="small" value="<?php echo  $c->patientSurgeon3;?>" >
+                             <input type="text" name="patientSurgeon3" id="patientSurgeon1_3"  class="small" value="******" >
                                
                         </div>
                           <div class="line">
                             <label>Surgeon 4</label>
                           
-                               <input type="text" name="patientSurgeon4" id="patientSurgeon1_4"  class="small" value="<?php echo  $c->patientSurgeon4;?>" >
+                               <input type="text" name="patientSurgeon4" id="patientSurgeon1_4"  class="small" value="******" >
                                
                         </div>
                          <div class="line" style="background-color:#F5A9E1">

@@ -60,7 +60,7 @@ $genderImage=array(
                                          <td bgcolor="<?php echo $myColor;?>">Operation Date:</td>
                                          <td><?php echo  str_replace('0000-00-00', '', $c->patientOpDate);?></td>
                                          <td bgcolor="<?php echo $myColor;?>">Surgeon</td>
-                                         <td><?php echo $c->patientSurgeon;?></td>
+                                         <td>******</td>
                                      </tr>
                                  </table>   
                                     

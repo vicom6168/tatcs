@@ -139,13 +139,7 @@ elseif($c->patientAgeUnit=="2"){
                              <?php }  ?>
                         </div>
                     <div class="line button">
-                                  <?php if($dataPermission=="Y" && $outOfDateFlag=="" && 1==2) { ?>
-                                <button type="submit" class="blue medium"><span>送出</span></button>
-                            <?php }  else if($dataPermission=="N"){ ?>
-                                     <div class="messages orange"> 您尚未得到 <?php echo $c->patientSurgeon;?> 醫師授權, 故無法修改或執行列印</div>
-                              <?php } else {
-                                        echo  $outOfDateFlag;
-                     } ?>
+                           
                                 <input type="hidden" name="patientID" id="patientID" class="small" value="<?php echo $c->patientID;?>" />
                         </div>
                   

@@ -43,51 +43,23 @@
                             <label>主治醫師 1
                                <img src="<?php echo base_url(); ?>images/help.png" width="18" height="18"  onmouseout='$(this).notify("");'  onmouseover='$(this).notify("Surgeon 1為此筆病患資料的擁有者, \n若非得到該Surgeon 1的授權即無法修改此筆病患資料",{className:"info",autoHide: false});'></img></label>  </label>
                           
-                               <select name="patientSurgeon" id="patientSurgeon">
-                                   <option value=""></option>
-                                      <?php 
-                            foreach($vsList->result() as $row){
-                                     ?>
-                                     <option value="<?php echo $row->vsName;?>" <?php if($row->vsName== $c->patientSurgeon) echo "selected";?>><?php echo $row->vsName;?></option>
-                                     <?php } ?>
-                                   </select>
+                               ******
                         </div>
                         
                           <div class="line">
                             <label>主治醫師 2</label>
                           
-                               <select name="patientSurgeon2" id="patientSurgeon2">
-                                   <option value=""></option>
-                                      <?php 
-                            foreach($vsList->result() as $row){
-                                     ?>
-                                     <option value="<?php echo $row->vsName;?>" <?php if($row->vsName== $c->patientSurgeon2) echo "selected";?>><?php echo $row->vsName;?></option>
-                                     <?php } ?>
-                                   </select>
+                               ******
                         </div>
                           <div class="line">
                             <label>住院醫師 1</label>
-                          
-                               <select name="patientSurgeon3" id="patientSurgeon3">
-                                   <option value=""></option>
-                                      <?php 
-                            foreach($vsList->result() as $row){
-                                     ?>
-                                     <option value="<?php echo $row->vsName;?>" <?php if($row->vsName== $c->patientSurgeon3) echo "selected";?>><?php echo $row->vsName;?></option>
-                                     <?php } ?>
-                                   </select>
+                          <?php echo $c->patientSurgeon3;?>
+                             
                         </div>
                           <div class="line">
                             <label>住院醫師 2</label>
-                          
-                               <select name="patientSurgeon4" id="patientSurgeon4">
-                                   <option value=""></option>
-                                      <?php 
-                            foreach($vsList->result() as $row){
-                                     ?>
-                                     <option value="<?php echo $row->vsName;?>" <?php if($row->vsName== $c->patientSurgeon4) echo "selected";?>><?php echo $row->vsName;?></option>
-                                     <?php } ?>
-                                   </select>
+                          <?php echo $c->patientSurgeon4;?>
+                             
                         </div>
                          <div class="line" style="background-color:#F5A9E1">
                             <label>Re-Operation</label>
@@ -215,13 +187,7 @@
                         
                         <div class="line button">
                            
-                            <?php if($dataPermission=="Y" && $outOfDateFlag=="" && 1==2) { ?>
-                                <button type="submit" class="blue medium"><span>送出</span></button>
-                            <?php }  else if($dataPermission=="N"){ ?>
-                                     <div class="messages orange"> 您尚未得到 <?php echo $c->patientSurgeon;?> 醫師授權, 故無法修改或執行列印</div>
-                              <?php } else {
-                                        echo  $outOfDateFlag;
-                     } ?>
+                      
                                 <input type="hidden" name="patientID" id="patientID" class="small" value="<?php echo $c->patientID;?>" />
                                 <input type="hidden" name="procedureID" id="procedureID" class="small" value="" />
                         </div>

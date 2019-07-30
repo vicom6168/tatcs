@@ -76,10 +76,7 @@ elseif($row->patientAgeUnit=="2"){
                                  </td>
                                 <td style="padding : 2px 8px;"><?php echo $row->patientGender;?></td>
                                  <td style="padding : 2px 8px;"><?php echo str_replace('0000-00-00', '', $row->patientOpDate);?></td>
-                            <td style="padding : 2px 8px;"><?php 
-                            //echo $row->patientSurgeon.($row->patientSurgeon2==""?"":"<br/>".$row->patientSurgeon2).($row->patientSurgeon3==""?"":"<br/>".$row->patientSurgeon3).($row->patientSurgeon4==""?"":"<br/>".$row->patientSurgeon4);
-                           echo $row->patientSurgeon;
-                            ?></td>
+                            <td style="padding : 2px 8px;">******</td>
                                
                             </tr>
                             <?php } ?>
