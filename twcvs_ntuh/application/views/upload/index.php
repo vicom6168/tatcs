@@ -13,7 +13,7 @@
         <div class="big">
             <div class="box">
                 <div class="title">
-                    <h2>上傳學會</h2>
+                    <h2>1. 查看上傳資料</h2>
                     
                 </div>
              
@@ -21,26 +21,30 @@
                         <form action="<?php echo base_url(); ?>upload/index" method="post">
                     
                         <div class="linewithoutindention">
-                         上次上傳時間:<?php echo $patientLastupdateTime;?>
-                     <form action="<?php echo base_url(); ?>api/send" method="post">
-                 <button type="submit" class="green medium" onclick="$(this).notify('資料上傳中, 請稍候, 謝謝','info'); "><span>開始上傳</span></button>
+                         <div class="messages orange"> 本系統己經改為自動上傳, 上次上傳時間為：<?php echo $patientLastupdateTime;?></div>
+                    
+        
+                    <label  class="withinLargedention">查詢期間：</label>
+                      <input type="text" name="qDate1" id="qDate1" class="small" value="<?php echo $d1;?>" />~
+                      <input type="text" name="qDate2" id="qDate2" class="small" value="<?php echo $d2;?>" />
+                      <button type="submit" class="greenmediumspecial"><span>送出</span></button>
+                      </div>
                  <input type="hidden" name="u1" value="<?php echo $d1;?>">
                   <input type="hidden" name="u2" value="<?php echo $d2;?>">
                   </form>
-                      </div>
+                   
                     <table cellspacing="0" cellpadding="0" border="0" class="sorting" width=100%> 
                         <thead> 
                             <tr> 
                                 <th nowrap>No.</th>
                                
-                                <th nowrap>Chart Number</th>
-                               <th nowrap>Name</th>
+                                <th nowrap>編碼</th>
+                               
                                 <th nowrap>Birthday</th>
                                 
                                 <th nowrap>Age</th>
                                 <th nowrap>Gender</th>
                                 <th nowrap>Operation Date</th>
-                                 <th nowrap>Last Updated</th>
                                
                             </tr> 
                         </thead> 
@@ -54,32 +58,21 @@
                             <tr> 
                                 <td><?php echo $j;?></td>
                                
-                                <td><?php echo $row->patientChartNumber;?></td>
-                                <td><?php echo $row->patientName;?></td>
+                                <td><?php echo $row->patientHospitalUUID;?></td>
                                 <td><?php echo $row->patientBirthday;?></td>
                                  <td><?php echo $row->patientAge;?></td>
                                 <td><?php echo $row->patientGender;?></td>
                                 <td><?php echo $row->patientOpDate;?></td>
-                                <td><?php echo $row->modifyTime;?></td>
                                
                             </tr>
                             <?php } ?>
                               
                         </tbody> 
                     </table>
-                     </form>
                
                
-           
-           <?php if($patientLastupdateTime!="" && $patientList->num_rows() >0) { ?>
-             <div class="line">
-                    <form action="<?php echo base_url(); ?>api/send" method="post">
-                 <button type="submit" class="green medium" onclick="$(this).notify('資料上傳中, 請稍候, 謝謝','info'); "><span>開始上傳</span></button>
-                 <input type="hidden" name="u1" value="<?php echo $d1;?>">
-                  <input type="hidden" name="u2" value="<?php echo $d2;?>">
-                  </form>
-               </div>
-               <?php } ?>
+               
+      
              
                 <br/> </div> </div>
        </div>
@@ -98,14 +91,12 @@
                         <tbody> 
                             
                             <tr> 
-                                <td><a href="<?php echo base_url(); ?>upload/index/"><span class='<?php echo ($subpage=="patient"?"currentPage":"");?>'>1. Upload Patient Data</span></a></td>
+                                <td><a href="<?php echo base_url(); ?>upload/index/"><span class='<?php echo ($subpage=="patient"?"currentPage":"");?>'>1. 查看上傳資料</span></a></td>
                             </tr>
                               <tr> 
                                 <td><a href="<?php echo base_url(); ?>upload/nonsurgery/"><span class='<?php echo ($subpage=="nonsurgery"?"currentPage":"");?>'>2. Upload Non Open Heart Data</span></a></td>
                             </tr>
-                              <tr> 
-                                <td><a href="<?php echo base_url(); ?>upload/uploadeddata/"><span class='<?php echo ($subpage=="uploadeddata"?"currentPage":"");?>'>3. 查看上傳資料</span></a></td>
-                            </tr>   
+                          
                        
                             
                             

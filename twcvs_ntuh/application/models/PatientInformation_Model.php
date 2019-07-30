@@ -609,9 +609,9 @@ function Save_patienthistory($patientinformationClass){
         return $this->db->query($sql);
    }
      function export_uploadpatientlist($d1,$d2,$h,$lastupdate){
-            $sql= "SELECT * FROM patientinformation t1 where isDeleted='N' and modifyTime>='$lastupdate'  and CompletedStatus='Y' and  isDeleted!='Y'";
+            $sql= "SELECT * FROM twcvs_www.patientinformation t1 where  patientOpDate>='$d1' and patientOpDate<='$d2' and  isDeleted='N' ";
          if($h!='')
-             $sql.= "  and patientHospital=?";
+             $sql.= "  and patientHospital='$h'";
          /*
             $subsql= "SELECT patientID ";
             $subsql.=" FROM patientinformation t1 where isDeleted='N' ";
@@ -632,6 +632,7 @@ function Save_patienthistory($patientinformationClass){
                $sql.= " and ( patientID not in(".$subsql.") )  )";
              //  echo $sql;
           * */
+         // echo $sql;
         return $this->db->query($sql,array($h)); 
 
     }

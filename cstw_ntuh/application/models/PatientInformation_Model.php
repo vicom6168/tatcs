@@ -329,7 +329,7 @@ function Save_patienthistory($patientinformationClass){
         return $this->db->query($sql);
    }
      function export_uploadpatientlist($d1,$d2,$h){
-            $sql= "SELECT * FROM patientinformation t1 where isDeleted='N' and patientOpDate>='$d1' and patientOpDate<='$d2' ";
+            $sql= "SELECT * FROM cstw_www.patientinformation t1 where isDeleted='N' and patientOpDate>='$d1' and patientOpDate<='$d2' ";
          if($h!='')
              $sql.= "  and patientHospital=?";
          
@@ -352,13 +352,14 @@ function Save_patienthistory($patientinformationClass){
             $subsql.= " or  ((Diagnosis_id1=''  or Diagnosis_id1 is null) and (DiagnosisOthers=''  or DiagnosisOthers is null) ) ";
                  
             $subsql.= " )";
-               $sql.= " and ( patientID not in(".$subsql.") )";
+           //    $sql.= " and ( patientID not in(".$subsql.") )";
              //  echo $sql;
         return $this->db->query($sql,array($h)); 
 
     }
    function export_uploadpatientdo($d1,$d2,$h){
-            $sql= "SELECT * FROM patientinformation t1 where isDeleted='N' and patientOpDate>='$d1' and patientOpDate<='$d2' ";
+            $sql= "SELECT * FROM patientinformation t1 where isDeleted='N' ";
+            // and patientOpDate>='$d1' and patientOpDate<='$d2' ";
          if($h!='')
              $sql.= "  and patientHospital=?";
          
@@ -368,7 +369,7 @@ function Save_patienthistory($patientinformationClass){
              $subsql.= " and (1>2 ";
           
          
-                $subsql.= "  or  (patientChartNumber =''  or  patientName=''  or  patientGender=''  or patientBirthday='' or patientBirthday='0000-00-00' or patientOpDate='' or patientOpDate='0000-00-00' or AdmissionDate='' or AdmissionDate='0000-00-00'  or DischargeDate='' or DischargeDate='0000-00-00' )";
+                $subsql.= "  or  (patientChartNumber =''  or  patientName=''  or  patientGender=''  or patientBirthday='' or patientBirthday='0000-00-00' or patientOpDate='' or patientOpDate='0000-00-00' )";
             
              
                $subsql.= "  or  (outcomeStatus='' or outcomeStatus is null) " ;
@@ -423,6 +424,16 @@ function Save_patienthistory($patientinformationClass){
     function mailStatus($patientID){
        $sql= "UPDATE  patientinformation set  InfoStatus='Y' where patientID=? ";
      return $this->db->query($sql,array($patientID)); 
+    }
+    
+      function query_uploadpatienttime(){
+         $sql= "SELECT * FROM patientlastupdatetime order by patientLastupdateTime desc limit 0,1";
+        return $this->db->query($sql,array());
+    }
+    
+    function reset_uploadpatienttime(){
+        $sql= "update  patientlastupdatetime set patientLastupdateTime=now()";
+        return $this->db->query($sql,array());
     }
 }
 

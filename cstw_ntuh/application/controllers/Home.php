@@ -50,7 +50,7 @@ class Home extends CI_Controller {
          $hospitalsystem= $this->Parameter_Model->query_system()->row()->patientname;   
         $data['hospitalsystem']=$hospitalsystem;
         $data['Msg']='';
-        $this->load->view('parameter/System',$data);
+        $this->load->view('parameter/system',$data);
     }
     
    
@@ -71,7 +71,7 @@ class Home extends CI_Controller {
         $hospitalsystem= $this->Parameter_Model->query_system()->row()->patientname;   
         $data['hospitalsystem']=$hospitalsystem;
         $data['Msg']='Modified success';
-        $this->load->view('parameter/System',$data);
+        $this->load->view('parameter/system',$data);
     }
    
     function checkUser(){

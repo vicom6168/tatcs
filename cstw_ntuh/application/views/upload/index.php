@@ -10,14 +10,15 @@
 <?php $this->load->view("menu");?>
     
     <div class="section">
-        <div class="big">
+        <div class="full">
             <div class="box">
                 <div class="title">
-                    <h2>上傳學會</h2>
+                    <h2>1.查詢上傳學會資料</h2>
                     
                 </div>
              
                 <div class="content">
+                     <div class="messages orange"> 本系統己經改為自動上傳, 上次上傳時間為：<?php echo $patientLastupdateTime;?></div>
                         <form action="<?php echo base_url(); ?>upload/index" method="post">
                     <div class="linewithoutindention">
                             <label  class="withinLargedention">醫院：</label>
@@ -44,8 +45,8 @@
                             <tr> 
                                 <th nowrap>No.</th>
                                 <th nowrap>Hospital</th>
-                                <th nowrap>Chart Number</th>
-                               <th nowrap>Name</th>
+                                <th nowrap>編碼</th>
+                               
                                 <th nowrap>Birthday</th>
                                 
                                 <th nowrap>Age</th>
@@ -64,8 +65,8 @@
                             <tr> 
                                 <td><?php echo $j;?></td>
                                 <td><?php echo $row->patientHospital;?></td>
-                                <td><?php echo $row->patientChartNumber;?></td>
-                                <td><?php echo $row->patientName;?></td>
+                                <td><?php echo $row->patientHospitalUUID;?></td>
+                                
                                 <td><?php echo $row->patientBirthday;?></td>
                                  <td><?php echo $row->patientAge;?></td>
                                 <td><?php echo $row->patientGender;?></td>
@@ -93,36 +94,7 @@
              
                 <br/> </div> </div>
        </div>
-        <div class="small">
-          
-             <div class="box">
-        <div class="content">
-                    <table cellspacing="0" cellpadding="0" border="0" class="sorting" width=100%> 
-                        <thead> 
-                            <tr> 
-                                <th nowrap>上傳學會</th>
-                               
-                                
-                            </tr> 
-                        </thead> 
-                        <tbody> 
-                            
-                            <tr> 
-                                <td><a href="<?php echo base_url(); ?>upload/index/"><span class='<?php echo ($subpage=="patient"?"currentPage":"");?>'>1. 上傳病患資料至學會</span></a></td>
-                            </tr>
-                            <!--
-                              <tr> 
-                                <td><a href="<?php echo base_url(); ?>upload/nonsurgery/"><span class='<?php echo ($subpage=="nonsurgery"?"currentPage":"");?>'>2. Upload Non Open Heart Data</span></a></td>
-                            </tr>
-                               
-                       -->
-                            
-                            
-                        </tbody> 
-                    </table>
-                </div>
-    </div>
-    </div>
+      
     
     
  <?php $this->load->view("footer");?>  

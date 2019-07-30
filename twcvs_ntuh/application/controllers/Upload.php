@@ -34,13 +34,16 @@ class Upload extends CI_Controller {
     {
         $d1=$this->input->post('qDate1')==null?"":$this->input->post('qDate1');
      $d2=$this->input->post('qDate2')==null?"":$this->input->post('qDate2');
-     $h1=$this->input->post('patientHospital')==null?"":$this->input->post('patientHospital');
+     $h1= $this->session->userdata('hospital');
         $data['result_msg']='';
         //$this->load->view('homenew',$data);
          $this->load->model('PatientInformation_Model');
      $data['patientLastupdateTime']= $this->PatientInformation_Model->query_uploadpatienttime()->row()->patientLastupdateTime;
+     if($d1!="" && $d2!=""){
      $data['patientList']=$this->PatientInformation_Model->export_uploadpatientlist($d1,$d2,$h1,$data['patientLastupdateTime']);
-        
+     } else {
+          $data['patientList']=$this->PatientInformation_Model->export_uploadpatientlist("1900-01-01","1900-01-01",$h1,$data['patientLastupdateTime']);
+     }
        
      $data['d1']=$d1;
      $data['d2']=$d2;
