@@ -13,7 +13,7 @@
         <div class="big">
             <div class="box">
                 <div class="title">
-                    <h2>1. 查看上傳資料</h2>
+                    <h2>1. 查詢上傳資料</h2>
                     
                 </div>
              
@@ -83,7 +83,7 @@
                     <table cellspacing="0" cellpadding="0" border="0" class="sorting" width=100%> 
                         <thead> 
                             <tr> 
-                                <th nowrap>上傳學會</th>
+                                <th nowrap>上傳查詢</th>
                                
                                 
                             </tr> 
@@ -91,7 +91,7 @@
                         <tbody> 
                             
                             <tr> 
-                                <td><a href="<?php echo base_url(); ?>upload/index/"><span class='<?php echo ($subpage=="patient"?"currentPage":"");?>'>1. 查看上傳資料</span></a></td>
+                                <td><a href="<?php echo base_url(); ?>upload/index/"><span class='<?php echo ($subpage=="patient"?"currentPage":"");?>'>1. 查詢上傳資料</span></a></td>
                             </tr>
                               <tr> 
                                 <td><a href="<?php echo base_url(); ?>upload/nonsurgery/"><span class='<?php echo ($subpage=="nonsurgery"?"currentPage":"");?>'>2. Upload Non Open Heart Data</span></a></td>

@@ -297,7 +297,7 @@ class Api extends CI_Controller {
                 $patientinformationClass->operationCongenitalBypassMemo=$this->input->post('operationCongenitalBypassMemo')=="0"?"":$this->input->post('operationCongenitalBypassMemo');
                 $patientinformationClass->patientSyntaxScore=$this->input->post('patientSyntaxScore')=="0"?"":$this->input->post('patientSyntaxScore');
                 $patientinformationClass->associationCategory2006=$this->input->post('associationCategory2006');
-                $patientinformationClass->associationCategory2009=$this->input->post('associationCategory2009');
+                $patientinformationClass->associationCategory2019=$this->input->post('associationCategory2019');
                 $this->PatientInformation_Model->Update_patient($pid, $patientinformationClass);
                    echo "<br/>修改病人資料:".$this->input->post('patientName');
                        
@@ -546,6 +546,7 @@ class Api extends CI_Controller {
                 $patientinformationClass->patientHospitalUUID=$this->input->post('patientHospitalUUID');
                 $patientinformationClass->patientSyntaxScore=$this->input->post('patientSyntaxScore')=="0"?"":$this->input->post('patientSyntaxScore');
                 $patientinformationClass->associationCategory2006=$this->input->post('associationCategory2006');
+                $patientinformationClass->associationCategory2019=$this->input->post('associationCategory2019');
                  $patientinformationClass->isDeleted=$this->input->post('isDeleted');
                echo "<br/><b>新增病人資料:".$this->input->post('patientName')."</b>";
                 $insert_id=$this->PatientInformation_Model->Save_patient($patientinformationClass);

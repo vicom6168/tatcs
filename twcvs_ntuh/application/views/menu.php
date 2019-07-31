@@ -36,7 +36,7 @@
              <?php } ?>    
              <li <?php if($page=='parameter') echo "class='current'"; ?>><a href="<?php echo base_url(); ?>home/accessrecord">參數設定</a></li>
              <?php if($this->session->userdata('isAdmin')=="Y") { ?>
-            <li <?php if($page=='upload') echo "class='current'"; ?>><a href="<?php echo base_url(); ?>upload/index">上傳學會</a></li>
+            <li <?php if($page=='upload') echo "class='current'"; ?>><a href="<?php echo base_url(); ?>upload/index">上傳查詢</a></li>
             <?php } ?>
                <li <?php if($page=='faq') echo "class='current'"; ?>><a href="<?php echo base_url(); ?>faq">常見問題</a></li>
                <li <?php if($page=='contact') echo "class='current'"; ?>><a href="<?php echo base_url(); ?>contact/addcontact">我要提問</a></li>

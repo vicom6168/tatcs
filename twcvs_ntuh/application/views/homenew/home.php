@@ -104,9 +104,10 @@
     <li>建議最佳解析度為1024*768或以上</li>
     <li>本站資料傳輸皆經SSL加密處理
        </li></ul>
- <a href="https://www.instantssl.com/wildcard-ssl.html" style="text-decoration:none; " target="_blank">
-    <img alt="Wildcard SSL" src="https://www.instantssl.com/ssl-certificate-images/support/comodo_secure_100x85_transp.png"
-    style="border: 0px;" /><br /> <span style="font-weight:bold;font-size:12px; padding-left:12px; color:#77BAE4;">Wildcard SSL</span>
+       <br />
+ <a href="https://www.trustlogo.com/ttb_searcher/trustlogo?v_querytype=W&v_shortname=SC5&v_search=http://www.twcvs.org.tw/&x=6&y=5" target="_blank">
+    <img alt="Wildcard SSL" src="https://www.twcvs.org.tw/images/sectigo_trust_seal_md_106x42.png"
+    style="border: 0px;" /><br /> <br /><span style="font-weight:bold;font-size:12px; padding-left:12px; color:#77BAE4;">Wildcard SSL</span>
 </a>
             
 

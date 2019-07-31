@@ -124,7 +124,7 @@ $currenYear=Date('Y');
                         <tbody> 
                             
                             <tr> 
-                                <td><a href="<?php echo base_url(); ?>upload/index/"><span class='<?php echo ($subpage=="patient"?"currentPage":"");?>'>1. 查看上傳資料</span></a></td>
+                                <td><a href="<?php echo base_url(); ?>upload/index/"><span class='<?php echo ($subpage=="patient"?"currentPage":"");?>'>1. 查詢上傳資料</span></a></td>
                             </tr>
                               <tr> 
                                 <td><a href="<?php echo base_url(); ?>upload/nonsurgery/"><span class='<?php echo ($subpage=="nonsurgery"?"currentPage":"");?>'>2. Upload Non Open Heart Data</span></a></td>
