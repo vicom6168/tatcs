@@ -72,7 +72,7 @@
                                 <td><?php echo $j;?></td>
                                 <td><?php echo $row->patientHospital;?></td>
                                 <td><?php echo $row->patientChartNumber;?></td>
-                                <td><?php echo $row->patientName;?></td>
+                                <td><?php echo ($hospitalsystem=="Y"?$row->patientName: mb_substr_replace($row->patientName,'O',1,1));?></td>
                                 <td><?php echo $row->patientBirthday;?></td>
                                  <td><?php echo $row->patientAge;?></td>
                                 <td><?php echo $row->patientGender;?></td>

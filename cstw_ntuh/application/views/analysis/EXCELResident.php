@@ -184,15 +184,15 @@ $objPHPExcel->getActiveSheet()->setTitle('3. Complications');
  $objPHPExcel->setActiveSheetIndex(0);
 $callStartTime = microtime(true);
 
-$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
 //$objWriter->save(str_replace('.php', '.xlsx', __FILE__));
 //$callEndTime = microtime(true);
 //$callTime = $callEndTime - $callStartTime;
-
+ob_end_clean();
 // We'll be outputting an excel file
 header('Content-type: application/vnd.ms-excel');
 // It will be called file.xls
-header('Content-Disposition: attachment; filename="file.xlsx"');
+header('Content-Disposition: attachment; filename="file.xls"');
 // Write file to the browser
 
 $objWriter->save('php://output');

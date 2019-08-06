@@ -57,6 +57,14 @@ public function index()
       $data['d2']=$d2;
      $data['h1']=$h1;
         $data['page']="export";    
+        
+         //看是否顯示病人全名--開始
+       $this->load->model('Parameter_Model');
+        $hospitalsystem= $this->Parameter_Model->query_system()->row()->patientname;   
+        $data['hospitalsystem']=$hospitalsystem;
+        
+       //看是否顯示病人全名--結束
+       
         $data['path']="<li>病患資料匯出</li><li  class='break'>&#187;</li><li>病患資料列表</li>";
         $this->load->view('exportpatient/query',$data);
     }

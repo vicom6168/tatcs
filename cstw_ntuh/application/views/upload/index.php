@@ -85,8 +85,7 @@
            <?php if($d1!="" && $d2!="" && $patientList->num_rows() >0) { ?>
              <div class="line">
                     <form action="<?php echo base_url(); ?>api/send" method="post">
-                 <button type="submit" class="green medium" onclick="$(this).notify('資料上傳中, 請稍候, 謝謝','info'); "><span>開始上傳</span></button>
-                 <input type="hidden" name="u1" value="<?php echo $d1;?>">
+                  <input type="hidden" name="u1" value="<?php echo $d1;?>">
                   <input type="hidden" name="u2" value="<?php echo $d2;?>">
                   </form>
                </div>

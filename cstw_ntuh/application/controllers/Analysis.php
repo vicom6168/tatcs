@@ -1887,7 +1887,7 @@ public function EXCELresident($qYear,$qMonth,$qYearEnd,$qMonthEnd){
         
        //看是否顯示病人全名--結束
      
-       $this->load->view('analysis/EXCELresident',$data); 
+       $this->load->view('analysis/EXCELResident',$data); 
 }
 }
 

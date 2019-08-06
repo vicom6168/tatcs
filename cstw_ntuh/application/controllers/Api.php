@@ -562,8 +562,8 @@ curl_setopt($ch, CURLOPT_URL, "http://www.cstw.org.tw/api/receive");
 curl_setopt($ch, CURLOPT_HEADER, false);
 //設定要傳的 變數A=值A & 變數B=值B (中間要用&符號串接)
 $this->load->model('PatientInformation_Model');
-      
-$patientList=$this->PatientInformation_Model->export_uploadpatientdo($d1,$d2,'');
+ $data['patientLastupdateTime']= $this->PatientInformation_Model->query_uploadpatienttime()->row()->patientLastupdateTime;           
+$patientList=$this->PatientInformation_Model->export_uploadpatientdo($d1,$d2,'',$data['patientLastupdateTime']);
 //$column = $this->PatientInformation_Model->viewRecord('270')->row();
   foreach($patientList->result() as $row){       
 $PostData = http_build_query((array) $row);
@@ -584,6 +584,7 @@ $data['page']="upload";
 $data['subpage']="patient"; 
 $data['html']=$html;
 $data['path']="<li>上傳學會</li><li  class='break'>&#187;</li><li>病患資料上傳結果</li>";
+$this->PatientInformation_Model->reset_uploadpatienttime();
 $this->load->view('upload/patient',$data);
 //echo $html;
 }

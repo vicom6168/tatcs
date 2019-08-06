@@ -357,8 +357,8 @@ function Save_patienthistory($patientinformationClass){
         return $this->db->query($sql,array($h)); 
 
     }
-   function export_uploadpatientdo($d1,$d2,$h){
-            $sql= "SELECT * FROM patientinformation t1 where isDeleted='N' ";
+   function export_uploadpatientdo($d1,$d2,$h,$lastupdate){
+            $sql= "SELECT * FROM patientinformation t1 where  modifyTime>='$lastupdate' and  isDeleted='N' ";
             // and patientOpDate>='$d1' and patientOpDate<='$d2' ";
          if($h!='')
              $sql.= "  and patientHospital=?";

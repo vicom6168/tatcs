@@ -14,9 +14,11 @@
                              <tr> 
                                 <td><a href="<?php echo base_url(); ?>analysis/complication/"><span class='<?php echo ($subpage=="complication"?"currentPage":"");?>'>3. 併發症統計報表 </span></a></td>
                              </tr>   
+                              <?php if($this->session->userdata('userRole')=="2" || $this->session->userdata('userRole')=="3") { ?>   
                                <tr> 
                                 <td><a href="<?php echo base_url(); ?>analysis/resident/"><span class='<?php echo ($subpage=="resident"?"currentPage":"");?>'>4. 住院醫師學會統計表 </span></a></td>
                              </tr>   
+                             <?php } ?>
                         </tbody> 
                     </table>
  
