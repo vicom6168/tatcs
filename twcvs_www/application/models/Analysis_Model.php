@@ -909,6 +909,12 @@ $sql.= " SELECT '振興醫療財團法人振興醫院' as hospital,count(*)  as 
    if($t=='2'){
                      $sql.= " and (CongenitalDiagnosisOthers=''  or CongenitalDiagnosisOthers is null)   and (CongenitalDiagnosis1=''  or CongenitalDiagnosis1 is null)  and (CongenitalDiagnosis2=''  or CongenitalDiagnosis2 is null)  and (CongenitalDiagnosis3=''  or CongenitalDiagnosis3 is null)  and (CongenitalDiagnosis4=''  or CongenitalDiagnosis4 is null)  and (CongenitalDiagnosis5=''  or CongenitalDiagnosis5 is null) ";
                      }
+                     
+                        $sql.= " UNION ";
+$sql.= " SELECT '輔英科技大學附屬醫院' as hospital,count(*)  as num FROM twcvs_fy.patientinformation t1 where isDeleted='N' and patientOpDate>='$d1' and patientOpDate<='$d2' ";
+   if($t=='2'){
+                     $sql.= " and (CongenitalDiagnosisOthers=''  or CongenitalDiagnosisOthers is null)   and (CongenitalDiagnosis1=''  or CongenitalDiagnosis1 is null)  and (CongenitalDiagnosis2=''  or CongenitalDiagnosis2 is null)  and (CongenitalDiagnosis3=''  or CongenitalDiagnosis3 is null)  and (CongenitalDiagnosis4=''  or CongenitalDiagnosis4 is null)  and (CongenitalDiagnosis5=''  or CongenitalDiagnosis5 is null) ";
+                     }
 $sql.= "  ) ";
 
                  
